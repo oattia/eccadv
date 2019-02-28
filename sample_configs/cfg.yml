@@ -1,0 +1,53 @@
+---
+datasets:
+  mnist:
+    type:
+      "mnist"
+    path:
+      "data/mnist"
+    preprocessing:
+      sample:
+        2000
+      sampling_type:
+        "stratified"
+      normalize:
+        "0-1"
+
+  cifar10:
+    type:
+      "cifar10"
+    path:
+      "data/cifar10"
+    preprocessing:
+      sample:
+        2000
+      sampling_type:
+        "stratified"
+      normalize:
+        "0-1"
+
+models:
+  
+attackers:
+
+eccs:
+
+experiments:
+  ex_name_1:
+    seed:
+      1234
+    dataset:
+      "mnist"
+    model:
+    attacker:
+    ecc:
+
+
+  ex_name_2:
+    seed:
+      9876
+    dataset:
+      "cifar10"
+    model:
+    attacker:
+    ecc:

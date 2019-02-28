@@ -1,0 +1,14 @@
+pyyaml==3.13
+tqdm==4.31.1
+pandas==0.24.1
+scikit-learn==0.20.2
+pytorch-cpu==1.0.1
+torchvision-cpu==0.2
+advertorch==0.1.2
+tensorflow==1.12.0
+Keras==2.2.4
+cleverhans==3.0.1
+foolbox==1.8.0
+adversarial-robustness-toolbox==0.5.0
+scikit-commpy==0.3.0
+unireedsolomon==1.0
