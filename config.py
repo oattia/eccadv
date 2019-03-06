@@ -7,7 +7,6 @@ from dataset.mnist import Mnist
 from dataset.cifar10 import Cifar10
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 class Config:
@@ -24,8 +23,12 @@ class Config:
         
         # Load experiment components
         self.datasets = self._load_datasets()
-        self.eccs = self._load_eccs()
-        self.eccs[None] = None
+
+        self.source_coders = self._load_source_coders()
+        self.source_coders[None] = None
+
+        self.channel_coders = self._load_channel_coders()
+        self.channel_coders[None] = None
 
         self.models = self._load_models()
         self.models[None] = None
@@ -35,7 +38,6 @@ class Config:
     
         # Final executable block
         self.experiments = self._load_experiments()
-
 
     def _load_datasets(self):
         to_load = self._config["datasets"] or {}
@@ -50,8 +52,11 @@ class Config:
             else:
                 raise Exception("Unsupported dataset.")
         return datasets
+
+    def _load_source_coders(self):
+        return {}
     
-    def _load_eccs(self):
+    def _load_channel_coders(self):
         to_load = self._config["eccs"] or {}
         eccs = {}
         for ecc_id, ecc_desc in to_load.items():
@@ -79,7 +84,7 @@ class Config:
             exps[ex_id] = Experiment(name=ex_id,
                                      seed=ex_desc.get("seed", 777),
                                      dataset=self.datasets[ex_desc["dataset"]],
-                                     ecc=self.eccs[ex_desc["ecc"]],
+                                     ecc=self.channel_coders[ex_desc["ccoder"]],
                                      model=self.models[ex_desc["model"]],
                                      attacker=self.attackers[ex_desc["attacker"]])
         return exps

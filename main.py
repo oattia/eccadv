@@ -2,12 +2,12 @@ import argparse
 import logging 
 
 from tqdm import tqdm
-import yaml
 
 from config import Config
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -19,6 +19,7 @@ def main():
         ex.run()
         logger.info(f"Finished experiment {ex_id}")
         logger.info("=" * 80)
+
 
 if __name__ == "__main__":
     main()

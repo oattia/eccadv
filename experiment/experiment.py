@@ -5,7 +5,7 @@ import torch
 import numpy as np
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+
 
 class Experiment:
     def __init__(self, name, seed, dataset, ecc, model, attacker):

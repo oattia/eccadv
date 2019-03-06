@@ -1,5 +1,4 @@
 import gzip
-import numpy as np
 import logging 
 import pickle
 
@@ -7,6 +6,7 @@ from dataset.dataset import Dataset
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
 
 class Mnist(Dataset):
     """
@@ -20,4 +20,5 @@ class Mnist(Dataset):
 
     def _set_arrays(self):
         with gzip.open(self.mnist_file.as_posix(), "rb") as f:
-                ((self.features_train, self.labels_train), (self.features_test, self.labels_test), _) = pickle.load(f, encoding="latin-1")
+                ((self.features_train, self.labels_train),
+                 (self.features_test, self.labels_test), _) = pickle.load(f, encoding="latin-1")

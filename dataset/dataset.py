@@ -1,11 +1,14 @@
 from pathlib import Path
 import logging
+
 import numpy as np
+from sklearn.model_selection import StratifiedShuffleSplit
 import tensorflow as tf 
 import torch
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
 
 class Dataset:
     """
@@ -16,7 +19,7 @@ class Dataset:
         self.path = Path(path)
         self.preprocessing = preprocessing
         
-        # numpy arrays for features and lables
+        # numpy arrays for features and labels
         self.features_train = None
         self.labels_train = None
         self.features_test = None
@@ -25,11 +28,16 @@ class Dataset:
         self.loaded = False
     
     def _set_arrays(self):
-        pass
+        raise NotImplementedError
     
     def _preprocess(self):
-        pass
-    
+        sample = self.preprocessing.get("sample", None)
+        if sample:
+            splitter = StratifiedShuffleSplit(train_size=sample)
+            train_index, _ = next(splitter.split(self.features_train, self.labels_train))
+            self.features_train = self.features_train[train_index, :]
+            self.labels_train = self.labels_train[train_index]
+
     def load(self):
         if self.loaded:
             return
@@ -50,7 +58,7 @@ class Dataset:
 
     def get_split(self):
         self._check_loaded()
-        return (self.features_train, self.labels_train, self.features_test, self.labels_test)
+        return self.features_train, self.labels_train, self.features_test, self.labels_test
     
     def to_tf(self):
         self._check_loaded()
@@ -59,4 +67,3 @@ class Dataset:
     def to_torch(self):
         self._check_loaded()
         return map(torch.tensor, self.get_split())
-        
