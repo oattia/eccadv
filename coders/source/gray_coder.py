@@ -2,7 +2,7 @@ import logging
 
 import numpy as np
 
-from scoder.source_coder import SourceCoder
+from coders.source.source_coder import SourceCoder
 from utils.utils import gray_code, int_to_bit_str
 
 logger = logging.getLogger(__name__)

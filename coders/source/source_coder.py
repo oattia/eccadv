@@ -36,3 +36,6 @@ class SourceCoder:
         Returns a decoding of this code or fails.
         """
         return self.code2symbol[bit_list_to_str(code)]
+
+    def has_code(self, code):
+        return code in self.code2symbol

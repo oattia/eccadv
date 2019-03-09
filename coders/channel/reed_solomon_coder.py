@@ -1,5 +1,4 @@
-
-from ccoder.channel_coder import ChannelCoder
+from coders.channel.channel_coder import ChannelCoder
 
 
 class ReedSolomonCoder(ChannelCoder):
@@ -7,8 +6,8 @@ class ReedSolomonCoder(ChannelCoder):
         super(ReedSolomonCoder, self).__init__()
         pass
 
-    def encode(self, s):
+    def encode(self, label, prob=False):
         pass
 
-    def decode(self, s):
+    def decode(self, bs):
         pass

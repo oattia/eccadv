@@ -1,5 +1,4 @@
-
-from ccoder.channel_coder import ChannelCoder
+from coders.channel.channel_coder import ChannelCoder
 
 
 class TruboCoder(ChannelCoder):

@@ -1,6 +1,6 @@
 import logging
 
-from scoder.source_coder import SourceCoder
+from coders.source.source_coder import SourceCoder
 from utils.utils import bit_list_to_str
 
 logger = logging.getLogger(__name__)

@@ -84,7 +84,7 @@ class Config:
             exps[ex_id] = Experiment(name=ex_id,
                                      seed=ex_desc.get("seed", 777),
                                      dataset=self.datasets[ex_desc["dataset"]],
-                                     ecc=self.channel_coders[ex_desc["ccoder"]],
+                                     ecc=self.channel_coders[ex_desc["coders"]],
                                      model=self.models[ex_desc["model"]],
                                      attacker=self.attackers[ex_desc["attacker"]])
         return exps

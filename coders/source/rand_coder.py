@@ -2,33 +2,36 @@ import logging
 
 import numpy as np
 
-from scoder.source_coder import SourceCoder
-from utils.utils import int_to_bit_str
+from coders.source.source_coder import SourceCoder
+from utils.utils import all_bit_strings
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
-class BcdCoder(SourceCoder):
+class RandomCoder(SourceCoder):
     """
-    Outputs an encoding for each symbol that is equal to its index's BCD representation, padded to equal length.
+    Outputs an encoding for each symbol that is a random binary string.
     """
     def __init__(self, alphabet, allow_zero):
-        super(BcdCoder, self).__init__(alphabet, allow_zero)
+        super(RandomCoder, self).__init__(alphabet, allow_zero)
 
     def _build_code(self):
         self.output_size = int(np.ceil(np.log2(len(self.alphabet))))
         if (not self.allow_zero) and ((1 << self.output_size) == len(self.alphabet)):
             self.output_size += 1
-        for i, symbol in enumerate(self.alphabet, start=(0 if self.allow_zero else 1)):
-            encoding = int_to_bit_str(i, self.output_size)
+        all_possible_encodings = all_bit_strings(self.output_size)
+        if not self.allow_zero:
+            all_possible_encodings.pop(0)
+        encoding_subset = np.random.choice(all_possible_encodings, len(self.alphabet), replace=False)
+        for symbol, encoding in zip(self.alphabet, encoding_subset):
             self.symbol2code[symbol] = encoding
             self.code2symbol[encoding] = symbol
 
 
 if __name__ == "__main__":
     alpha = list(range(16))
-    b = BcdCoder(alpha, True)
+    b = RandomCoder(alpha, False)
     for sym in alpha:
         print(sym)
         enc = b.encode(sym)
