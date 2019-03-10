@@ -1,3 +1,4 @@
+import math
 from pathlib import Path
 import logging
 
@@ -45,25 +46,31 @@ class Dataset:
         self._preprocess()
         self.loaded = True
 
-    def _check_loaded(self):
+    def _is_loaded(self):
         assert self.loaded
         assert self.features_train is not None
         assert self.labels_train is not None
         assert self.features_test is not None
         assert self.labels_test is not None
+
+    def iter_train(self, batch_size):
+        num_batches = math.ceil(len(self.features_train) / batch_size)
+        for i in range(num_batches):
+            yield self.features_train[i * batch_size: i + batch_size, :], \
+                  self.labels_train[i * batch_size: i + batch_size]
     
     def get_labels(self):
-        self._check_loaded()
+        self._is_loaded()
         return np.unique(self.labels_train)
 
     def get_split(self):
-        self._check_loaded()
+        self._is_loaded()
         return self.features_train, self.labels_train, self.features_test, self.labels_test
     
     def to_tf(self):
-        self._check_loaded()
+        self._is_loaded()
         return map(tf.convert_to_tensor, self.get_split())
 
     def to_torch(self):
-        self._check_loaded()
+        self._is_loaded()
         return map(torch.tensor, self.get_split())

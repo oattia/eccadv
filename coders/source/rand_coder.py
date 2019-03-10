@@ -13,13 +13,15 @@ class RandomCoder(SourceCoder):
     """
     Outputs an encoding for each symbol that is a random binary string.
     """
-    def __init__(self, alphabet, allow_zero):
-        super(RandomCoder, self).__init__(alphabet, allow_zero)
+    def __init__(self, name, allow_zero, output_size):
+        super(RandomCoder, self).__init__(name, allow_zero, output_size)
 
     def _build_code(self):
-        self.output_size = int(np.ceil(np.log2(len(self.alphabet))))
-        if (not self.allow_zero) and ((1 << self.output_size) == len(self.alphabet)):
-            self.output_size += 1
+        min_output_size = int(np.ceil(np.log2(len(self.alphabet))))
+        if (not self.allow_zero) and ((1 << min_output_size) == len(self.alphabet)):
+            min_output_size += 1
+        if self.output_size < min_output_size:
+            self.output_size = min_output_size
         all_possible_encodings = all_bit_strings(self.output_size)
         if not self.allow_zero:
             all_possible_encodings.pop(0)
@@ -31,7 +33,8 @@ class RandomCoder(SourceCoder):
 
 if __name__ == "__main__":
     alpha = list(range(16))
-    b = RandomCoder(alpha, False)
+    b = RandomCoder("rc", False, -1)
+    b.set_alphabet(alpha)
     for sym in alpha:
         print(sym)
         enc = b.encode(sym)

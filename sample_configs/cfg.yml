@@ -5,21 +5,39 @@ datasets:
     path: "data/mnist"
     preprocessing:
       sample: 2000
-      normalize: "0-1"
+      normalize: "0-1" # currently ignored
 
   cifar10:
     type: "cifar10"
     path: "data/cifar10"
     preprocessing:
       sample: 2000
-      normalize: "0-1"
+      normalize: "0-1" # currently ignored
 
 source_coders:
-  one_hot:
-
+  bcd:
+    type: "bcd"
+    allow_zero: False
+    output_size: -1
+  gray:
+    type: "gray"
+    allow_zero: False
+    output_size: -1
+  rand:
+    type: "rand"
+    allow_zero: False
+    output_size: -1
+  oh:
+    type: "oh"
+    allow_zero: False
+    output_size: -1
 
 
 channel_coders:
+  rs_10:
+    type: "rs"
+    n: 10
+
 
 models:
   

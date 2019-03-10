@@ -3,6 +3,11 @@ import itertools
 import numpy as np
 
 
+def hamming_distance(s1, s2):
+    assert len(s1) == len(s2)
+    return sum([int(s1[i] != s2[i]) for i in range(len(s1))])
+
+
 def bit_list_to_str(bl):
     return "".join([str(int(bit)) for bit in bl])
 
@@ -24,7 +29,7 @@ def flip_random(s, k):
     return bit_list_to_str([int(bit) ^ int(i in idxs) for i, bit in enumerate(s)])
 
 
-def encode_probs(s, e, factor=1):
+def encode_probs(s, e, factor):
     ps = np.exp(-1 * factor * np.array(list(range(e+1))))
     ps = ps / np.sum(ps)
     k = np.random.choice(e+1, 1, replace=False, p=ps)
