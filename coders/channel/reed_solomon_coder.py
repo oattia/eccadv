@@ -34,13 +34,17 @@ class ReedSolomonCoder(ChannelCoder):
         return encoding
 
     def decode(self, bs):
-        assert self.is_set()
-        encoded_bytes = []
-        for i in range(0, len(bs), 8):
-            encoded_bytes.append(int(bs[i:i + 8], base=2))
-        decoded_bytes, _ = self.rs.decode(encoded_bytes, return_string=False, nostrip=True)
-        decoding = "".join([str(bit) for bit in decoded_bytes])
-        return self.source_coder.decode(decoding)
+        try:
+            assert self.is_set()
+            bs = "".join([str(x) for x in bs])
+            encoded_bytes = []
+            for i in range(0, len(bs), 8):
+                encoded_bytes.append(int(bs[i:i + 8], base=2))
+            decoded_bytes, _ = self.rs.decode(encoded_bytes, return_string=False, nostrip=True)
+            decoding = "".join([str(bit) for bit in decoded_bytes])
+            return self.source_coder.decode(decoding)
+        except Exception as e:
+            return f"{ChannelCoder.CANT_DECODE} because {e}"
 
     def output_size(self):
         return self.n * 8

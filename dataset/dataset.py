@@ -56,8 +56,9 @@ class Dataset:
     def iter_train(self, batch_size):
         num_batches = math.ceil(len(self.features_train) / batch_size)
         for i in range(num_batches):
-            yield self.features_train[i * batch_size: i + batch_size, :], \
-                  self.labels_train[i * batch_size: i + batch_size]
+            start = i * batch_size
+            end = min(i + batch_size, len(self.features_train))
+            yield self.features_train[start: end, :], self.labels_train[start: end]
     
     def get_labels(self):
         self._is_loaded()

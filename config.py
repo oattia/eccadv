@@ -79,7 +79,7 @@ class Config:
                                                     repetition=coder_desc["rep"],
                                                     method=coder_desc.get("method", "block"))
             elif c_type == "dummy":
-                ccoders[coder_id] = DummyChannelCoder(name=coder_id, prob=prob)
+                ccoders[coder_id] = DummyChannelCoder(name=coder_id, prob=prob, factor=factor)
             else:
                 raise Exception(f"Unsupported channel coder type {c_type}")
         return ccoders

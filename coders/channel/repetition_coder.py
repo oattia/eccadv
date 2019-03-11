@@ -48,19 +48,23 @@ class RepetitionCoder(ChannelCoder):
         return encoding
 
     def decode(self, bs):
-        assert self.is_set()
-        if self.method == "bit":
-            decoding = ""
-            for i in range(0, len(bs), self.d):
-                decoding += RepetitionCoder._majority_decode_bit(bs[i:i+self.d])
-        elif self.method == "block":
-            blocks = []
-            for i in range(0, len(bs), self.source_coder.output_size):
-                blocks.append(bs[i:i + self.source_coder.output_size])
-            decoding = RepetitionCoder._majority_decode_block(blocks)
-        else:
-            raise Exception(f"Invalid decoding method {self.method} for {self.name}")
-        return self.source_coder.decode(decoding)
+        try:
+            assert self.is_set()
+            bs = "".join([str(x) for x in bs])
+            if self.method == "bit":
+                decoding = ""
+                for i in range(0, len(bs), self.d):
+                    decoding += RepetitionCoder._majority_decode_bit(bs[i:i+self.d])
+            elif self.method == "block":
+                blocks = []
+                for i in range(0, len(bs), self.source_coder.output_size):
+                    blocks.append(bs[i:i + self.source_coder.output_size])
+                decoding = RepetitionCoder._majority_decode_block(blocks)
+            else:
+                raise Exception(f"Invalid decoding method {self.method} for {self.name}")
+            return self.source_coder.decode(decoding)
+        except Exception as e:
+            return f"{ChannelCoder.CANT_DECODE} because {e}"
 
     def output_size(self):
         return self.d * self.source_coder.output_size

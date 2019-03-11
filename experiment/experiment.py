@@ -27,10 +27,10 @@ class Experiment:
         self.ccoder: ChannelCoder = channel_coder
         self.model: Model = model
         self.attacker: Attacker = attacker
-        self.output_dir = Path("ex_output") / (name + int(time.time()))
+        self.output_dir = Path("exp_output") / name
 
     def _initialize(self):
-        # make output directory if it doesn't exist
+        # create the output directory if it doesn't exist
         self.output_dir.mkdir(parents=True, exist_ok=True)
         # load and wire components together
         self.dataset.load()
@@ -39,12 +39,7 @@ class Experiment:
         self.model.initialize()
 
     def _train_model(self):
-        if not self.model.is_trainable():
-            return
-        for features, labels in self.dataset.iter_train(self.model.batch_size):
-            encoded_labels = [self.ccoder.encode(y) for y in labels]
-            self.model.train_batch(features, encoded_labels)
-        self.model.save(self.output_dir)
+        pass
 
     def _evaluate_model(self, model: Model):
         pass
