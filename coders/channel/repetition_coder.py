@@ -1,5 +1,5 @@
 from coders.channel.channel_coder import ChannelCoder
-from utils.utils import encode_probs
+from coders.utils import encode_probs
 
 
 class RepetitionCoder(ChannelCoder):

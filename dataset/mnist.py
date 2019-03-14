@@ -22,3 +22,4 @@ class Mnist(Dataset):
         with gzip.open(self.mnist_file.as_posix(), "rb") as f:
                 ((self.features_train, self.labels_train),
                  (self.features_test, self.labels_test), _) = pickle.load(f, encoding="latin-1")
+        self.shape = (28, 28, 1)

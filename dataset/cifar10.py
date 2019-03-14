@@ -49,3 +49,4 @@ class Cifar10(Dataset):
         unpickled_test_data = self._unpickle_batch(self.test_filename)
         self.features_test = unpickled_test_data[b"data"]
         self.labels_test = np.array(unpickled_test_data[b"labels"], ndmin=2, dtype=np.int8).T
+        self.shape = (32, 32, 3)

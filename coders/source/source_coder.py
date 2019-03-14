@@ -1,6 +1,6 @@
 import logging
 
-from utils.utils import bit_list_to_str
+from coders.utils import bit_list_to_str
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

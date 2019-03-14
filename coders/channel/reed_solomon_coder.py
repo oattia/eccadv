@@ -1,5 +1,5 @@
 from coders.channel.channel_coder import ChannelCoder
-from utils.utils import encode_probs, int_to_bit_str
+from coders.utils import encode_probs, int_to_bit_str
 
 import unireedsolomon as urs
 

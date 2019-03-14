@@ -3,7 +3,7 @@ import logging
 import numpy as np
 
 from coders.source.source_coder import SourceCoder
-from utils.utils import all_bit_strings
+from coders.utils import all_bit_strings
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
