@@ -22,7 +22,7 @@ class RandomCoder(SourceCoder):
             min_output_size += 1
         if self.output_size < min_output_size:
             self.output_size = min_output_size
-        all_possible_encodings = all_bit_strings(self.output_size)
+        all_possible_encodings = list(all_bit_strings(self.output_size))
         if not self.allow_zero:
             all_possible_encodings.pop(0)
         encoding_subset = np.random.choice(all_possible_encodings, len(self.alphabet), replace=False)

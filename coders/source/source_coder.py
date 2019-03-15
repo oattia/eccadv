@@ -62,3 +62,18 @@ class SourceCoder:
         """
         assert self.has_alphabet()
         return code in self.code2symbol
+
+
+class DummySourceCoder(SourceCoder):
+    """
+    Dummy source coder, returns codes that are given to it.
+    """
+    def __init__(self, name, codes):
+        super(DummySourceCoder, self).__init__(name, True, len(codes[0]))
+        self.codes = codes
+
+    def _build_code(self):
+        assert len(self.alphabet) == len(self.codes)
+        for symbol, code in zip(self.alphabet, self.codes):
+            self.symbol2code[symbol] = code
+            self.code2symbol[code] = symbol

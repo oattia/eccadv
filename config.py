@@ -107,5 +107,5 @@ class Config:
                                      dataset=self.datasets.get(ex_desc["dataset"], None),
                                      source_coder=self.scoders.get(ex_desc["source_coder"], None),
                                      channel_coder=self.ccoders.get(ex_desc["channel_coder"], None),
-                                     model_manager=self.models.get(ex_desc["model"], None))
+                                     nn_model=self.models.get(ex_desc["model"], None))
         return exps

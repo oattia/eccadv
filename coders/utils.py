@@ -17,11 +17,24 @@ def int_to_bit_str(i, length):
 
 
 def all_bit_strings(length):
-    return ["".join(seq) for seq in itertools.product("01", repeat=length)]
+    for seq in itertools.product("01", repeat=length):
+        yield "".join(seq)
+
+
+def pop_count(s):
+    return sum([1 if bit == "1" else 0 for bit in s])
 
 
 def gray_code(i):
     return i ^ (i >> 1)
+
+
+def n_bits_with_k_set(n, k):
+    for bits in itertools.combinations(range(n), k):
+        s = ["0"] * n
+        for bit in bits:
+            s[bit] = "1"
+        yield "".join(s)
 
 
 def flip_random(s, k):

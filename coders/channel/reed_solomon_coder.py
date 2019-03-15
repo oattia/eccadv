@@ -51,14 +51,29 @@ class ReedSolomonCoder(ChannelCoder):
 
 
 if __name__ == "__main__":
-    alpha = list(range(10))
-    from coders.source.rand_coder import RandomCoder
-    r = ReedSolomonCoder("rsc", prob=True, n=10)
-    r.set_source_coder(RandomCoder("rc", allow_zero=False, output_size=-1))
+    n = 200
+    k = 14
+    alpha = list(range(1 << k))
+    from coders.source.source_coder import DummySourceCoder
+    r = ReedSolomonCoder("rsc", prob=False, n=n, factor=0)
+    from coders.utils import all_bit_strings, pop_count
+    from collections import defaultdict, OrderedDict
+    all_bin_strings = list(all_bit_strings(k))
+    r.set_source_coder(DummySourceCoder("dummy", codes=all_bin_strings))
+
+    dd = defaultdict(int)
     r.set_alphabet(alpha)
     for sym in alpha:
-        print(sym)
+        # print(sym)
         enc = r.encode(sym)
-        dec = r.decode(enc)
-        print(dec)
-        print("--")
+        p = pop_count(enc)
+        dd[p] += 1
+        # print("--")
+    print(OrderedDict(sorted(dd.items(), key=lambda t: t[0])))
+    for i in range(n * 8 // 2 - n // 2, n * 8 // 2 + n // 2):
+        if i == n * 8 / 2:
+            print("********************************")
+        if dd[i]:
+            print(i, dd[i])
+        if i == n * 8 / 2:
+            print("********************************")

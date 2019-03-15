@@ -25,7 +25,7 @@ class CleverhansAttacker(Attacker):
         elif library == Libraries.TORCH.name:
             cleverhans_model = CallableModelWrapper(convert_pytorch_model_to_tf(network), output_layer="logits")
         elif library == Libraries.TF.name:
-            # assume it will be tf-cleverhans model, best effort trial, will fail next if not
+            # assume it will be a tf-cleverhans model, best effort trial, will fail next if not
             cleverhans_model = network
         else:
             raise Exception(f"Unsupported library '{library}' for Cleverhans.")

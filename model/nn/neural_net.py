@@ -12,9 +12,15 @@ class NeuralNetModel:
     Abstract Class to hide the details of the deep learning library used (Keras, TF, Pytorch).
     """
     def __init__(self, name, config):
-        self.model = None
+        self.name = name
+        self.config = config
 
-    def initialize(self, input_shape, output_dim):
+        self.network_model = None
+        self.n_classes = -1
+        self.input_shape = None
+        self.output_size = -1
+
+    def initialize(self, input_shape, n_classes, output_dim):
         raise NotImplementedError
 
     def train_batch(self, features, labels):
@@ -45,7 +51,4 @@ class NeuralNetModel:
         """
         Returns all information about the model necessary for attackers.
         """
-        raise NotImplementedError
-
-    def __repr__(self):
         raise NotImplementedError

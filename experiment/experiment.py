@@ -17,13 +17,13 @@ class Experiment:
     """
     Links components together, runs the experiment according to the configuration, and manages outputs.
     """
-    def __init__(self, name, seed, dataset, source_coder, channel_coder, model_manager):
+    def __init__(self, name, seed, dataset, source_coder, channel_coder, nn_model, adversary):
         self.name = name
         self.seed = seed
         self.dataset: Dataset = dataset
         self.scoder: SourceCoder = source_coder
         self.ccoder: ChannelCoder = channel_coder
-        self.model_manager: ModelManager = model_manager
+        self.model_manager: ModelManager = nn_model
         self.output_dir = Path("exp_output") / name
 
     def _initialize(self):
