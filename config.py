@@ -126,5 +126,6 @@ class Config:
                                      source_coder=self.scoders.get(ex_desc["source_coder"], None),
                                      channel_coder=self.ccoders.get(ex_desc["channel_coder"], None),
                                      model=self.models.get(ex_desc["model"], None),
-                                     attacker=self.attackers.get(ex_desc["attacker"], None))
+                                     attacker=self.attackers.get(ex_desc["attacker"], None),
+                                     thresholding=ex_desc["thresholding"])
         return exps

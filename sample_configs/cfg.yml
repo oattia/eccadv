@@ -55,13 +55,13 @@ models:
       lr: 0.001
       epochs: 6
       batch_size: 128
-      loss: "cross_entropy"
+      loss: "hamming_loss"
       nb_filters: 64
 
   ch_cnn_loaded:
     type: "KERAS"
     params:
-      load_from: "exp_output/ex_name_1/ch_cnn_train"
+      load_from: "exp_output/cross_entropy/ch_cnn_train"
       train: False
 
 attackers:
@@ -77,10 +77,13 @@ attackers:
 
 
 experiments:
-  ex_name_1:
+  ex_name_2:
     seed: 1234
     dataset: "mnist"
-    source_coder: "bcd"
+    source_coder: "oh"
     channel_coder: "dummy"
-    model: "ch_cnn_train"
-    attacker: "fgsm_ch"
+    model: "ch_cnn_loaded"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 1

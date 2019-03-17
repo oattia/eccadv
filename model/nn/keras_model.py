@@ -1,5 +1,6 @@
 from model.nn.neural_net import NeuralNetModel, Libraries
 
+import tensorflow as tf
 from tensorflow import keras
 
 # Assignment rather than import because direct import from within Keras
@@ -34,12 +35,22 @@ def ch_cnn_model(input_shape, output_size, config):
     return model
 
 
+def hamming_loss(y_true, y_pred):
+    tf.convert_to_tensor_or_sparse_tensor()
+
+
+
 KERAS_MODEL_CATALOG = {
     "ch_cnn": ch_cnn_model
 }
 
 KERAS_LOSS_CATALOG = {
-    "cross_entropy": "categorical_crossentropy"
+    "cross_entropy": "categorical_crossentropy",
+    "binary_entropy": "binary_crossentropy",
+    "mse": "mean_squared_error",
+    "hamming_loss": hamming_loss,
+    "sig_entropy": tf.losses.sigmoid_cross_entropy,
+    "edit_distance": tf.edit_distance
 }
 
 
@@ -69,11 +80,6 @@ class KerasNnModel(NeuralNetModel):
         )
 
     def train_batch(self, features, labels):
-        # print(type(features))
-        # print(type(labels))
-        #
-        # print(features.shape)
-        # print(labels.shape)
         return self.network_model.train_on_batch(features, labels)
 
     def predict(self, features):

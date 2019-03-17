@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+from model.utils import threshold
 
 from sklearn.metrics import accuracy_score
 import tensorflow as tf
@@ -16,7 +17,7 @@ class Experiment:
     Class for Experiment logic.
     Links and initializes components, manages NeuralNetModel models, attacker and evaluations.
     """
-    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker):
+    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker, thresholding):
         self.name = name
         self.seed = seed
         self.dataset = dataset
@@ -25,6 +26,7 @@ class Experiment:
         self.model = model
         self.attacker = attacker
         self.output_dir = Path("exp_output") / name
+        self.thresholding = thresholding
 
     def _set_seed(self):
         np.random.seed(self.seed)
@@ -61,15 +63,15 @@ class Experiment:
         for e in epoch_pbar:
             batches_pbar = tqdm(self.dataset.iter_train(self.dataset.shape, batch_size), total=t_batches)
             for i, (features, labels) in enumerate(batches_pbar):
-                encoded_labels = np.array([[int(b) for b in code] for code in [self.ccoder.encode(y) for y in labels]])
-                loss = self.model.train_batch(features, encoded_labels)
-                epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {}".format(e, i+1, loss))
+                encoded_labels = np.array([[int(bit) for bit in codeword] for codeword in [self.ccoder.encode(y) for y in labels]])
+                metrics = self.model.train_batch(features, encoded_labels)
+                epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {}. Acc: {}".format(e, i+1, metrics[0], metrics[1]))
         if save_model:
             self.model.save_to(self.output_dir / self.model.name)
 
     def _predict_labels(self, features):
         nn_labels = self.model.predict(features)
-        return np.array([self.ccoder.decode(nn_label) for nn_label in nn_labels])
+        return np.array([self.ccoder.decode(threshold(nn_label, **self.thresholding)) for nn_label in nn_labels])
 
     def _evaluate(self):
         """
