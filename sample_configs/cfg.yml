@@ -4,7 +4,6 @@ datasets:
     type: "mnist"
     path: "data/mnist"
     preprocessing:
-      sample: 256
       normalize: "0-1" # currently ignored
 
   cifar10:
@@ -51,6 +50,7 @@ models:
   ch_cnn_train:
     type: "KERAS"
     params:
+      save: True
       structure: "ch_cnn"
       lr: 0.001
       epochs: 6
@@ -82,5 +82,5 @@ experiments:
     dataset: "mnist"
     source_coder: "bcd"
     channel_coder: "dummy"
-    model: "ch_cnn_loaded"
+    model: "ch_cnn_train"
     attacker: "fgsm_ch"

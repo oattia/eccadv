@@ -5,6 +5,8 @@ from sklearn.metrics import accuracy_score
 import tensorflow as tf
 import numpy as np
 import torch
+from tqdm import tqdm, trange
+
 
 logger = logging.getLogger(__name__)
 
@@ -51,11 +53,19 @@ class Experiment:
     def _train_model(self):
         if not self.model.is_trainable:
             return
-        for e in range(1, self.model.config["epochs"] + 1):
-            for features, labels in self.dataset.iter_train(self.dataset.shape, self.model.config["batch_size"]):
+        batch_size = self.model.config["batch_size"]
+        epochs = self.model.config["epochs"]
+        save_model = self.model.config.get("save", True)
+        t_batches = self.dataset.get_num_train_batches(batch_size)
+        epoch_pbar = trange(1,  epochs + 1)
+        for e in epoch_pbar:
+            batches_pbar = tqdm(self.dataset.iter_train(self.dataset.shape, batch_size), total=t_batches)
+            for i, (features, labels) in enumerate(batches_pbar):
                 encoded_labels = np.array([[int(b) for b in code] for code in [self.ccoder.encode(y) for y in labels]])
-                self.model.train_batch(features, encoded_labels)
-        self.model.save_to(self.output_dir / self.model.name)
+                loss = self.model.train_batch(features, encoded_labels)
+                epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {}".format(e, i+1, loss))
+        if save_model:
+            self.model.save_to(self.output_dir / self.model.name)
 
     def _predict_labels(self, features):
         nn_labels = self.model.predict(features)
@@ -65,7 +75,7 @@ class Experiment:
         """
         Evaluates the model on benign and adversarial examples.
         """
-        for test_features, ground_truth_lables in self.dataset.iter_test(self.dataset.shape):
+        for test_features, ground_truth_lables in tqdm(self.dataset.iter_test(self.dataset.shape), desc="Test"):
             model_acc, adv_acc, changed_acc = 0.0, 0.0, 0.0
             benign_labels = self._predict_labels(test_features)
             model_acc = accuracy_score(ground_truth_lables.astype(str), benign_labels)

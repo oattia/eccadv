@@ -69,7 +69,12 @@ class KerasNnModel(NeuralNetModel):
         )
 
     def train_batch(self, features, labels):
-        self.network_model.train_on_batch(features, labels)
+        # print(type(features))
+        # print(type(labels))
+        #
+        # print(features.shape)
+        # print(labels.shape)
+        return self.network_model.train_on_batch(features, labels)
 
     def predict(self, features):
         return self.network_model.predict_on_batch(features)

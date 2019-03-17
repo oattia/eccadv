@@ -36,6 +36,7 @@ class Dataset:
         raise NotImplementedError
     
     def _preprocess(self):
+        # stratified sampling for K samples
         sample = self.preprocessing.get("sample", None)
         if sample:
             splitter = StratifiedShuffleSplit(train_size=sample)
@@ -64,7 +65,7 @@ class Dataset:
         num_batches = math.ceil(len(labels) / batch_size)
         for i in range(num_batches):
             start = i * batch_size
-            end = min(i + batch_size, len(features))
+            end = min(start + batch_size, len(labels))
             cur_batch_size = end - start
             yield features[start: end, :].reshape((cur_batch_size,) + shape), labels[start: end]
 
@@ -72,6 +73,9 @@ class Dataset:
         self._is_loaded()
         assert batch_size > 0
         return Dataset._iter_array(batch_size, shape, self.features_train, self.labels_train)
+
+    def get_num_train_batches(self, batch_size):
+        return math.ceil(len(self.labels_train) / batch_size)
 
     def iter_test(self, shape, batch_size=None):
         self._is_loaded()
