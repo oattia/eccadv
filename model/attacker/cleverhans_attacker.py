@@ -11,8 +11,12 @@ class CleverhansAttacker(Attacker):
     """
     Attacker based on the cleverhans library.
     """
-    def __init__(self, name,  nn_model, attack_params):
-        super(CleverhansAttacker, self).__init__(name, nn_model, attack_params)
+    def __init__(self, name, params):
+        super(CleverhansAttacker, self).__init__(name, params)
+        self.attack = None
+
+    def initialize(self, nn_model):
+        super(CleverhansAttacker, self).initialize(nn_model)
 
         # model context for attack, it must have: library, network
         model_context = self.nn_model.context()
@@ -28,18 +32,18 @@ class CleverhansAttacker(Attacker):
             # assume it will be a tf-cleverhans model, best effort trial, will fail next if not
             cleverhans_model = network
         else:
-            raise Exception(f"Unsupported library '{library}' for Cleverhans.")
+            raise Exception("Unsupported library '{}' for Cleverhans.".format(library))
 
         # attack choice and initialization
-        attack_type = self.attack_params["type"]
-        if attack_type == Attacks.FGSM.name:
+        attack_method = self.attack_params.pop("method")
+        if attack_method == Attacks.FGSM.name:
             self.attack = FastGradientMethod(cleverhans_model, sess=tf_session)
-        elif attack_type == Attacks.BIM.name:
+        elif attack_method == Attacks.BIM.name:
             self.attack = BasicIterativeMethod(cleverhans_model, sess=tf_session)
-        elif attack_type == Attacks.MIM.name:
+        elif attack_method == Attacks.MIM.name:
             self.attack = MomentumIterativeMethod(cleverhans_model, sess=tf_session)
         else:
-            raise Exception(f"Unsupported attack '{attack_type}' for Cleverhans.")
+            raise Exception("Unsupported attack '{}' for Cleverhans.".format(attack_method))
 
     def perturb(self, samples):
         # perturb the features according to the attack params

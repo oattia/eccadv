@@ -1,8 +1,14 @@
 from model.nn.neural_net import NeuralNetModel, Libraries
 
-import keras
-from keras.models import Sequential, load_model
-from keras.layers import Dense, Activation, Flatten, Conv2D
+from tensorflow import keras
+
+# Assignment rather than import because direct import from within Keras
+# doesn't work in tf 1.8
+Sequential = keras.models.Sequential
+Conv2D = keras.layers.Conv2D
+Dense = keras.layers.Dense
+Activation = keras.layers.Activation
+Flatten = keras.layers.Flatten
 
 
 def ch_cnn_model(input_shape, output_size, config):
@@ -39,45 +45,44 @@ KERAS_LOSS_CATALOG = {
 
 class KerasNnModel(NeuralNetModel):
     def __init__(self, name, config):
-        super(KerasNnModel).__init__(name, config)
-        self.model_choice = self.config["catalog_id"]
+        super(KerasNnModel, self).__init__(name, config)
 
-    def initialize(self, input_shape, n_classes, output_dim):
-        self.n_classes = n_classes
-        self.input_shape = input_shape
-        self.output_size = output_dim
-        self.network_model = KERAS_MODEL_CATALOG[self.model_choice](input_shape, output_dim, self.config)
+    def _build_model(self):
+        model_choice = self.config["structure"]
+        self.network_model = KERAS_MODEL_CATALOG[model_choice](self.input_shape, self.output_size, self.config)
+
         if self.n_classes == self.output_size:
             self.network_model.add(Activation("softmax"))
         else:
             self.network_model.add(Activation("sigmoid"))
 
+        self.network_model.summary()
+
         # To be able to call the model in the custom loss, we need to call it once
         # before, see https://github.com/tensorflow/tensorflow/issues/23769
         self.network_model(self.network_model.input)
+
         self.network_model.compile(
             optimizer=keras.optimizers.Adam(self.config["lr"]),
-            loss=KERAS_LOSS_CATALOG[self.config["loss"]]
+            loss=KERAS_LOSS_CATALOG[self.config["loss"]],
+            metrics=["accuracy"]
         )
 
     def train_batch(self, features, labels):
         self.network_model.train_on_batch(features, labels)
 
     def predict(self, features):
-        predicted = self.network_model.predict_on_batch(features)
-        if self.n_classes == self.output_size:
-            return (predicted == predicted.max()).astype(int)
-        else:
-            threshold = self.config
+        return self.network_model.predict_on_batch(features)
 
     def save_to(self, path):
-        self.network_model.save(path / self.name)
+        self.network_model.save(path.as_posix())
 
     def load_from(self, path):
-        self.network_model = load_model(path / self.name)
+        self.network_model = keras.models.load_model(path)
+        self.network_model.summary()
 
     def context(self):
         return {
             "network": self.network_model,
-            "library": Libraries.KERAS
+            "library": Libraries.KERAS.name
         }

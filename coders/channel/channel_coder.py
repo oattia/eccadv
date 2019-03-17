@@ -13,7 +13,7 @@ class ChannelCoder:
         self.name = name
         self.prob = prob
         self.factor = factor
-        self.source_coder: SourceCoder = None
+        self.source_coder = None
     
     def encode(self, s):
         raise NotImplementedError

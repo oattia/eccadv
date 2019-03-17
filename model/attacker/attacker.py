@@ -1,10 +1,10 @@
-from model.nn.neural_net import NeuralNetModel
+from enum import Enum
 
 
-class Attacks:
-    FGSM    = 0
-    BIM     = 1
-    MIM     = 2
+class Attacks(Enum):
+    FGSM = 0
+    BIM  = 1
+    MIM  = 2
 
 
 class Attacker:
@@ -12,10 +12,13 @@ class Attacker:
     Abstract Class to hide the details of the adversarial attack library used:
         (Cleverhans, Foolbox, Advertorch, Adversarial-Robustness-Toolbox).
     """
-    def __init__(self, name, nn_model, attack_params):
+    def __init__(self, name, attack_params):
         self.name = name
-        self.nn_model: NeuralNetModel = nn_model
+        self.nn_model = None
         self.attack_params = attack_params
+
+    def initialize(self, nn_model):
+        self.nn_model = nn_model
 
     def perturb(self, samples):
         """"
@@ -28,8 +31,8 @@ class DummyAttacker(Attacker):
     """
     Dummy attacker that does not perturb the given samples.
     """
-    def __init__(self, name, nn_model=None, attack_params=None):
-        super(DummyAttacker, self).__init__(name, None, None)
+    def __init__(self, name, attack_params={}):
+        super(DummyAttacker, self).__init__(name, {})
 
     def perturb(self, samples):
         return samples

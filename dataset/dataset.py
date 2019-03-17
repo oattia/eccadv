@@ -22,10 +22,10 @@ class Dataset:
         
         # numpy arrays for features and labels
         # 2-D matrices (#samples x unrolled vector)
-        self.features_train: np.array = None
-        self.labels_train: np.array = None
-        self.features_test: np.array = None
-        self.labels_test: np.array = None
+        self.features_train = None
+        self.labels_train = None
+        self.features_test = None
+        self.labels_test = None
 
         # real shape tuple of the features
         self.shape = None
@@ -65,7 +65,8 @@ class Dataset:
         for i in range(num_batches):
             start = i * batch_size
             end = min(i + batch_size, len(features))
-            yield features[start: end, :].reshape((batch_size,) + shape), labels[start: end]
+            cur_batch_size = end - start
+            yield features[start: end, :].reshape((cur_batch_size,) + shape), labels[start: end]
 
     def iter_train(self, shape, batch_size):
         self._is_loaded()

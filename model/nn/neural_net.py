@@ -19,8 +19,22 @@ class NeuralNetModel:
         self.n_classes = -1
         self.input_shape = None
         self.output_size = -1
+        self.is_trainable = True
 
-    def initialize(self, input_shape, n_classes, output_dim):
+    def initialize(self, input_shape, output_dim, n_classes):
+        self.input_shape = input_shape
+        self.output_size = output_dim
+        self.n_classes = n_classes
+        if "load_from" in self.config:
+            self.load_from(self.config["load_from"])
+            self.is_trainable = self.config.get("train", False)
+        else:
+            self._build_model()
+
+    def _build_model(self):
+        """
+        Builds a new model from scratch according to the config.
+        """
         raise NotImplementedError
 
     def train_batch(self, features, labels):

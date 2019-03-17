@@ -41,7 +41,7 @@ class RepetitionCoder(ChannelCoder):
         elif self.method == "block":
             encoding = bs * self.d
         else:
-            raise Exception(f"Invalid encoding method {self.method} for {self.name}")
+            raise Exception("Invalid encoding method {} for {}".format(self.method, self.name))
 
         if self.prob:
             encoding = encode_probs(encoding, self.max_correct, self.factor)
@@ -61,10 +61,10 @@ class RepetitionCoder(ChannelCoder):
                     blocks.append(bs[i:i + self.source_coder.output_size])
                 decoding = RepetitionCoder._majority_decode_block(blocks)
             else:
-                raise Exception(f"Invalid decoding method {self.method} for {self.name}")
+                raise Exception("Invalid decoding method {} for {}".format(self.method, self.name))
             return self.source_coder.decode(decoding)
         except Exception as e:
-            return f"{ChannelCoder.CANT_DECODE} because {e}"
+            return "{} because {}".format(ChannelCoder.CANT_DECODE, str(e))
 
     def output_size(self):
         return self.d * self.source_coder.output_size

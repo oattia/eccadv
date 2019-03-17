@@ -4,7 +4,7 @@ datasets:
     type: "mnist"
     path: "data/mnist"
     preprocessing:
-      sample: 2000
+      sample: 256
       normalize: "0-1" # currently ignored
 
   cifar10:
@@ -17,8 +17,8 @@ datasets:
 source_coders:
   bcd:
     type: "bcd"
-    allow_zero: False
-    output_size: -1
+    allow_zero: True
+    output_size: 10
   gray:
     type: "gray"
     allow_zero: False
@@ -32,29 +32,55 @@ source_coders:
     allow_zero: False
     output_size: -1
 
-
 channel_coders:
   rs_10:
     type: "rs"
     n: 10
-
+    prob: False
+    factor: 1
+  rep_10:
+    type: "rep"
+    rep: 10
+    method: "block"
+    prob: False
+    factor: 1
+  dummy:
+    type: "dummy"
 
 models:
-  
+  ch_cnn_train:
+    type: "KERAS"
+    params:
+      structure: "ch_cnn"
+      lr: 0.001
+      epochs: 6
+      batch_size: 128
+      loss: "cross_entropy"
+      nb_filters: 64
+
+  ch_cnn_loaded:
+    type: "KERAS"
+    params:
+      load_from: "exp_output/ex_name_1/ch_cnn_train"
+      train: False
+
 attackers:
+  fgsm_ch:
+    type: "ch"
+    params:
+      method: "FGSM"
+      eps: 0.3
+      clip_min: 0.0
+      clip_max: 1.0
+  dummy:
+    type: "dummy"
+
 
 experiments:
   ex_name_1:
     seed: 1234
     dataset: "mnist"
-    model:
-    attacker:
-    ecc:
-
-
-  ex_name_2:
-    seed: 9876
-    dataset: "cifar10"
-    model:
-    attacker:
-    ecc:
+    source_coder: "bcd"
+    channel_coder: "dummy"
+    model: "ch_cnn_loaded"
+    attacker: "fgsm_ch"

@@ -25,7 +25,7 @@ class Cifar10(Dataset):
     """
     def __init__(self, name, path, preprocessing):
         super(Cifar10, self).__init__(name, path, preprocessing)
-        self.train_filenames = [self.path / f"data_batch_{i}" for i in range(1, 6)]
+        self.train_filenames = [self.path / "data_batch_{}".format(str(i)) for i in range(1, 6)]
         self.test_filename = self.path / "test_batch"
         self.labels_map_file = self.path / "batches.meta"
 
