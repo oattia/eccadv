@@ -1,6 +1,3 @@
-from coders.source.source_coder import SourceCoder
-
-
 class ChannelCoder:
     """
     In coding theory, channel coder is an encoder/decoder object that maps binary strings to valid codewords by adding
@@ -29,9 +26,6 @@ class ChannelCoder:
 
     def set_source_coder(self, source_coder):
         self.source_coder = source_coder
-
-    def set_alphabet(self, alphabet):
-        self.source_coder.set_alphabet(alphabet)
 
 
 class DummyChannelCoder(ChannelCoder):

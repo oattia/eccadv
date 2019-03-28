@@ -4,6 +4,7 @@ datasets:
     type: "mnist"
     path: "data/mnist"
     preprocessing:
+      sample: 1000
       normalize: "0-1" # currently ignored
 
   cifar10:
@@ -17,7 +18,11 @@ source_coders:
   bcd:
     type: "bcd"
     allow_zero: True
-    output_size: 10
+    output_size: -1
+  weight:
+    type: "weight"
+    output_size: 6
+    weight: 3
   gray:
     type: "gray"
     allow_zero: False
@@ -55,13 +60,37 @@ models:
       lr: 0.001
       epochs: 6
       batch_size: 128
-      loss: "hamming_loss"
+      loss: "cross_entropy"
       nb_filters: 64
+
+  ch_cnn_train2:
+    type: "KERAS"
+    params:
+      save: True
+      structure: "ch_cnn"
+      lr: 0.001
+      epochs: 6
+      batch_size: 128
+      loss: "cross_entropy"
+      nb_filters: 64
+
+
+  art_cnn_train:
+    type: "KERAS"
+    params:
+      save: True
+      structure: "art_cnn"
+      lr: 0.001
+      epochs: 6
+      batch_size: 128
+      loss: "cross_entropy"
+      nb_filters: 32
+
 
   ch_cnn_loaded:
     type: "KERAS"
     params:
-      load_from: "exp_output/cross_entropy/ch_cnn_train"
+      load_from: "exp_output/binary_entropy/ch_cnn_train"
       train: False
 
 attackers:
@@ -72,18 +101,42 @@ attackers:
       eps: 0.3
       clip_min: 0.0
       clip_max: 1.0
+
+  fgsm_art:
+    type: "art"
+    params:
+      method: "FGSM"
+      eps: 0.3
+
+  fgsm_art2:
+    type: "art"
+    params:
+      method: "FGSM"
+      eps: 0.3
+
   dummy:
     type: "dummy"
 
 
 experiments:
-  ex_name_2:
+  protected:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight"
+    channel_coder: "rep_10"
+    model: "ch_cnn_train2"
+    attacker: "fgsm_art2"
+    thresholding:
+      method: "max_k"
+      k: 30
+
+  regular:
     seed: 1234
     dataset: "mnist"
     source_coder: "oh"
     channel_coder: "dummy"
-    model: "ch_cnn_loaded"
-    attacker: "dummy"
+    model: "ch_cnn_train"
+    attacker: "fgsm_art"
     thresholding:
       method: "max_k"
       k: 1

@@ -22,7 +22,7 @@ class Config:
         
         self._config = None
         with open(cfg_fpath, "r") as cfg_file:
-            self._config = yaml.load(cfg_file.read(), Loader=yaml.FullLoader)
+            self._config = yaml.load(cfg_file.read())
         
         # Load experiment components
         self.datasets = self._load_datasets()
@@ -65,6 +65,9 @@ class Config:
                 scoders[coder_id] = BcdCoder(name=coder_id, allow_zero=allow_zero, output_size=output_size)
             elif s_type == "oh":
                 scoders[coder_id] = OneHotCoder(name=coder_id, allow_zero=allow_zero, output_size=output_size)
+            elif s_type == "weight":
+                weight = scoder_desc["weight"]
+                scoders[coder_id] = WeightCoder(name=coder_id, output_size=output_size, weight=weight)
             elif s_type == "dummy":
                 scoders[coder_id] = DummySourceCoder(name=coder_id, codes=open(scoder_desc["from"], "r").read().split())
             else:
@@ -108,8 +111,9 @@ class Config:
             atkr_type = atkr_desc["type"]
             att_params = atkr_desc.get("params", {})
             if atkr_type == "ch":
-                att_params = atkr_desc["params"]
                 attackers[atkr_id] = CleverhansAttacker(atkr_id, att_params)
+            elif atkr_type == "art":
+                attackers[atkr_id] = ArtAttacker(atkr_id, att_params)
             elif atkr_type == "dummy":
                 attackers[atkr_id] = DummyAttacker(atkr_id, att_params)
             else:

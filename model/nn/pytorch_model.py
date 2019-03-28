@@ -1,17 +1,30 @@
 from model.nn.neural_net import NeuralNetModel, Libraries
 
-import tensorflow as tf
-from tensorflow import keras
+import torch
+import torch.nn as nn
 
-# Assignment rather than import because direct import from within Keras
-# doesn't work in tf 1.8
-Sequential = keras.models.Sequential
-Conv2D = keras.layers.Conv2D
-Dense = keras.layers.Dense
-Activation = keras.layers.Activation
-Flatten = keras.layers.Flatten
-MaxPooling2D = keras.layers.MaxPooling2D
-Dropout = keras.layers.Dropout
+
+class LeNet5(nn.Module):
+
+    def __init__(self):
+        super(LeNet5, self).__init__()
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1, stride=1)
+        self.relu1 = nn.ReLU(inplace=True)
+        self.maxpool1 = nn.MaxPool2d(2)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1, stride=1)
+        self.relu2 = nn.ReLU(inplace=True)
+        self.maxpool2 = nn.MaxPool2d(2)
+        self.linear1 = nn.Linear(7 * 7 * 64, 200)
+        self.relu3 = nn.ReLU(inplace=True)
+        self.linear2 = nn.Linear(200, 10)
+
+    def forward(self, x):
+        out = self.maxpool1(self.relu1(self.conv1(x)))
+        out = self.maxpool2(self.relu2(self.conv2(out)))
+        out = out.view(out.size(0), -1)
+        out = self.relu3(self.linear1(out))
+        out = self.linear2(out)
+        return out
 
 
 def ch_cnn_model(input_shape, output_size, config):
@@ -37,37 +50,13 @@ def ch_cnn_model(input_shape, output_size, config):
     return model
 
 
-def art_cnn_model(input_shape, output_size, config):
-    import keras.models as km
-    import keras.layers as kl
-    nb_filters = config["nb_filters"]
-    model = km.Sequential()
-    model.add(kl.Conv2D(nb_filters, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
-    model.add(kl.Conv2D(nb_filters*2, (3, 3), activation='relu'))
-    model.add(kl.MaxPooling2D(pool_size=(2, 2)))
-    model.add(kl.Dropout(0.25))
-    model.add(kl.Flatten())
-    model.add(kl.Dense(nb_filters*4, activation='relu'))
-    model.add(kl.Dropout(0.5))
-    model.add(kl.Dense(output_size))
-    return model
-
-
 def hamming_loss(y_true, y_pred):
     tf.convert_to_tensor_or_sparse_tensor()
 
 
 KERAS_MODEL_CATALOG = {
-    "ch_cnn": ch_cnn_model,
-    "art_cnn": art_cnn_model
+    "ch_cnn": ch_cnn_model
 }
-
-
-def mae(labels, preds, from_logits=True):
-    def mmaaee(_, __):
-        return keras.losses.mean_absolute_error(labels, preds)
-    return mmaaee(labels, preds)
-
 
 KERAS_LOSS_CATALOG = {
     "cross_entropy": "categorical_crossentropy",
@@ -76,12 +65,8 @@ KERAS_LOSS_CATALOG = {
     "hamming_loss": hamming_loss,
     "sig_entropy": tf.losses.sigmoid_cross_entropy,
     "edit_distance": tf.edit_distance,
-    "mae": mae #keras.losses.mean_absolute_error
+    "mae": "mean_absolute_error"
 }
-
-
-import keras.backend as k
-setattr(k, "mae", KERAS_LOSS_CATALOG["mae"])
 
 
 class KerasNnModel(NeuralNetModel):
@@ -101,16 +86,13 @@ class KerasNnModel(NeuralNetModel):
 
         # To be able to call the model in the custom loss, we need to call it once
         # before, see https://github.com/tensorflow/tensorflow/issues/23769
-        # self.network_model(self.network_model.input)
+        self.network_model(self.network_model.input)
 
         self.network_model.compile(
             optimizer=keras.optimizers.Adam(self.config["lr"]),
             loss=KERAS_LOSS_CATALOG[self.config["loss"]],
             metrics=["accuracy"]
         )
-
-        import keras.backend as k
-        k.set_learning_phase(1)
 
     def train_batch(self, features, labels):
         return self.network_model.train_on_batch(features, labels)

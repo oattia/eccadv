@@ -45,8 +45,8 @@ class Experiment:
 
         # set up the coders for this dataset
         ds_labels = self.dataset.get_labels()
+        self.scoder.set_alphabet(ds_labels)
         self.ccoder.set_source_coder(self.scoder)
-        self.ccoder.set_alphabet(ds_labels)
 
         # set up the model and the attacker
         self.model.initialize(self.dataset.shape, self.ccoder.output_size(), len(ds_labels))
@@ -65,13 +65,16 @@ class Experiment:
             for i, (features, labels) in enumerate(batches_pbar):
                 encoded_labels = np.array([[int(bit) for bit in codeword] for codeword in [self.ccoder.encode(y) for y in labels]])
                 metrics = self.model.train_batch(features, encoded_labels)
-                epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {}. Acc: {}".format(e, i+1, metrics[0], metrics[1]))
+                epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {:0.2f}. Acc: {:0.2f}".format(e, i+1, metrics[0], metrics[1]))
         if save_model:
             self.model.save_to(self.output_dir / self.model.name)
 
     def _predict_labels(self, features):
         nn_labels = self.model.predict(features)
-        return np.array([self.ccoder.decode(threshold(nn_label, **self.thresholding)) for nn_label in nn_labels])
+        # print(nn_labels.tolist())
+        ll = np.array([self.ccoder.decode(threshold(nn_label, **self.thresholding)) for nn_label in nn_labels])
+        # print(ll.tolist())
+        return ll
 
     def _evaluate(self):
         """
@@ -97,8 +100,7 @@ class Experiment:
         self._train_model()
 
         # 3- Evaluate the trained model on benign and adversarial examples
-        for result in self._evaluate():
-            print(result)
+        return [result for result in self._evaluate()]
 
     def __repr__(self):
         return "Experiment(name={}, seed={}, dataset={}, source_coder={}, channel_coder={}, model={})".format(self.name, self.seed, self.dataset.name, self.scoder.name, self.ccoder.name, self.model.name)

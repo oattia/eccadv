@@ -35,7 +35,7 @@ class CleverhansAttacker(Attacker):
             raise Exception("Unsupported library '{}' for Cleverhans.".format(library))
 
         # attack choice and initialization
-        attack_method = self.attack_params.pop("method")
+        attack_method = self.attack_params["method"]
         if attack_method == Attacks.FGSM.name:
             self.attack = FastGradientMethod(cleverhans_model, sess=tf_session)
         elif attack_method == Attacks.BIM.name:
@@ -47,4 +47,7 @@ class CleverhansAttacker(Attacker):
 
     def perturb(self, samples):
         # perturb the features according to the attack params
-        return self.attack.generate_np(samples, **self.attack_params)
+        params = {param: self.attack_params[param] for param in self.attack.feedable_kwargs
+                  if param in self.attack_params}
+        return self.attack.generate_np(samples, **params)
+

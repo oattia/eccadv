@@ -14,11 +14,15 @@ def main():
     parser.add_argument("-c", "--config", required=True, help="Path to YAML config file.")
     args = parser.parse_args()    
     config = Config(args.config)
+    summary = {}
     for ex_id, ex in tqdm(config.experiments.items(), desc="Executing experiments"):
         logger.info("Starting experiment {}".format(ex_id))
-        ex.run()
+        summary[ex_id] = ex.run()
         logger.info("Finished experiment {}".format(ex_id))
         logger.info("=" * 80)
+
+    for ex_id, result in summary.items():
+        print(ex_id + ": " + str(result))
 
 
 if __name__ == "__main__":
