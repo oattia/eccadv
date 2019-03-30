@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage[nonatbib]{project}
+
+\usepackage[breaklinks=true,letterpaper=true,colorlinks,citecolor=black,bookmarks=false]{hyperref}
+
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage[normalem]{ulem}
+
+% use Times
+\usepackage{times}
+% For figures
+\usepackage{graphicx} % more modern
+%\usepackage{epsfig} % less modern
+%\usepackage{subfig} 
+
+\graphicspath{{../fig/}}
+
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{caption} 
+\usepackage{subcaption} 
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [very thick,->,>=stealth]
+
+\usepackage{cleveref}
+\usepackage{setspace}
+\usepackage{wrapfig}
+%\usepackage[ruled]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[noend,linesnumbered]{algorithm2e}
+
+\usepackage[disable]{todonotes}
+
+
+\title{On Coding Theory Adversarial Robustness}
+
+\author{
+	Omar Attia \\
+	School of Computer Science\\
+	University of Waterloo\\
+	Waterloo, ON, N2L 3G1 \\
+	\texttt{omar.attia@uwaterloo.ca}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract} 
+Put here a brief summary of the project: what is it about, what are the related works, what is your execution plan, what do you expect to learn/contribute, and how are you going to evaluate your results. The proposal is expected to be 1 page (reference excluded), so be concise and to the point.
+\end{abstract} 
+
+\section{Introduction}
+In this section you are going to present a brief background and motivation of your project. Why is it interesting/significant? How does it relate to the course?
+
+\section{Related Works}
+Perform an initial review of relevant literature. Has your problem, or one of similar nature, been considered before? By whom? What are the differences or limitations (if any)? 
+
+\section{Proposed Work}
+In this section please concisely describe what you are going to achieve in this project. E.g., formulate your problem precisely (mathematically), present the technical challenges (if any), discuss the tools or datasets that you will build on, state your goals, and come up with a plan for evaluation.
+
+For your own sake, you might want to lay out a time line, so that you can keep a good track of your project.
+
+\newpage
+
+\section*{The report}
+Please summarize all your findings (empirical, algorithmic, theoretical) in a scientific report. I expect there is an introduction section, a background section, a main result section, and a conclusion section. Depending on your project, you may include an experimental section and/or discussion section. Please always give proper citations to prior work or results. Be precise and concise. I expect the report to be less than \textbf{8 pages} (references excluded).
+
+Below are some suggested structures for the report. You do not have to follow any of them. Do what you think is best to summarize your project.
+\subsection*{Option A (Literature survey)}
+\begin{itemize}
+\item Introduction
+	\begin{itemize}
+	\item What is the problem?
+	\item Why is it an important problem?
+	\end{itemize}
+\item Survey
+	\begin{itemize}
+	\item Summarize the range of techniques by highlighting their strengths and weaknesses (i.e., the 6-10 papers that you read)
+	\item Tip: this summary should not be a laundry list of techniques with an independent paragraph for each technique
+	\item Suggestion: organize your summary based on desirable properties of the techniques
+	\end{itemize}
+\item Analysis
+	\begin{itemize}
+	\item What is the state of the art?
+	\item Any open problem?
+	\end{itemize}
+\item Conlusion
+	\begin{itemize}
+	\item What have you learned?
+	\item What future research do you recommend?
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Option B (Empirical evaluation)}
+\begin{itemize}
+\item Introduction
+	\begin{itemize}
+	\item What is the problem?
+	\item Why is it an important problem?
+	\end{itemize}
+\item Techniques to tackle the problem
+	\begin{itemize}
+	\item Brief review of previous work concerning this problem (i.e., the 3-6 papers that you read)
+	\item Brief description of the techniques chosen and why
+	\end{itemize}
+\item Empirical evaluation
+	\begin{itemize}
+	\item Describe the datasets you tested on; justify their relevance
+	\item Compare empirically the techniques for complexity, performance, ease of use, etc.
+	\end{itemize}
+\item Conclusion
+	\begin{itemize}
+	\item What is the best technique, in terms of what?
+	\item Is any technique good enough to declare the problem solved?
+	\item What future research do you recommend?
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Option C (Algorithm design)}
+\begin{itemize}
+\item Introduction
+	\begin{itemize}
+	\item What is the problem?
+	\item Why can't any of the existing techniques effectively tackle this problem?
+	\item What is the intuition behind the technique that you have developed?
+	\end{itemize}
+\item Techniques to tackle the problem
+	\begin{itemize}
+	\item Brief review of previous work concerning this problem (i.e., the 3-6 papers that you read)
+	\item Describe the technique that you developed
+	\item Brief description of the existing techniques that you will compare to
+	\end{itemize}
+\item Evaluation
+	\begin{itemize}
+	\item Describe the datasets you tested on; justify their relevance
+	\item Analyze and compare (empirically or theoretically) your new approach to existing approaches
+	\end{itemize}
+\item Conclusion
+	\begin{itemize}
+	\item Can your new technique effectively tackle the problem?
+	\item What future research do you recommend?
+	\end{itemize}
+\end{itemize}
+
+\subsection*{Option D (Theoretical analysis)}
+\begin{itemize}
+\item Introduction
+	\begin{itemize}
+	\item What is the problem or technique?
+	\item What properties did you analyze/prove about this problem or technique?
+	\end{itemize}
+\item Analysis
+	\begin{itemize}
+	\item Brief survey of previous work concerning this problem (i.e., the 3-6 papers that you read)
+	\item Describe the analysis performed
+	\end{itemize}
+\item Conclusion:
+	\begin{itemize}
+	\item What have you discovered about the technique analyzed?
+	\item What future research do you recommend?
+	\end{itemize}
+\end{itemize}
+
+\newpage
+
+\section*{Acknowledgement}
+Thank people who have helped or influenced you in this project.
+
+\nocite{*}
+
+\bibliographystyle{unsrtnat}
+\bibliography{project}
+
+\end{document}

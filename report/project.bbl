@@ -1,0 +1,25 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Shalev-Shwartz and Ben-David(2014)]{SS14}
+Shai Shalev-Shwartz and Shai Ben-David.
+\newblock \emph{Understanding Machine Learning: From Theory to Algorithms}.
+\newblock Cambridge University Press, 2014.
+
+\bibitem[Block(1962)]{Block62}
+H.~D. Block.
+\newblock The perceptron: A model for brain functioning.
+\newblock \emph{Reviews of Modern Physics}, 34\penalty0 (1):\penalty0 123--135,
+  1962.
+
+\bibitem[Novikoff(1962)]{Novikoff62}
+A.~Novikoff.
+\newblock On convergence proofs for perceptrons.
+\newblock In \emph{Symposium on Mathematical Theory of Automata}, pages
+  615--622, 1962.
+
+\end{thebibliography}
