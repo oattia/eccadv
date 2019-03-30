@@ -24,6 +24,7 @@ class WeightCoder(SourceCoder):
         if self.output_size < min_output_size:
             self.output_size = min_output_size
 
+        # look for the lowest output_size that can encode all symbols
         while comb(self.output_size, self.weight, exact=True) < len(self.alphabet):
             self.output_size += 1
 

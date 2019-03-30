@@ -48,7 +48,7 @@ class HadamardCoder(ChannelCoder):
         for i in range(1 << k):
             idx_mapper[int(all_binary_strings[i], base=2)] = i
 
-        idx_formatter = [idx_mapper[i] for i in range(1 << k)]
+        codeword_order = [idx_mapper[i] for i in range(1 << k)]
 
         # systematic generator matrix ( k x n )
         # In coding theory, a generator matrix is a matrix whose rows form a basis for a linear code.
@@ -73,10 +73,11 @@ class HadamardCoder(ChannelCoder):
         R = np.vstack([np.zeros(((1 << k) - k, k), dtype=int), np.eye(k, dtype=int)])
 
         # Return the matrices in the right order for the lookup table
-        return G[:, idx_formatter], H[:, idx_formatter], R[idx_formatter, :]
+        return G[:, codeword_order], H[:, codeword_order], R[codeword_order, :]
 
     @staticmethod
     def _hadamard_matrix(n):
+        # Adapted from: https://introcs.cs.princeton.edu/python/14array/hadamard.py.html
         # assert n is a power of two and not zero
         assert (n != 0) and ((n & (n - 1)) == 0)
         # Initialize Hadamard matrix of order n.
@@ -110,7 +111,7 @@ class HadamardCoder(ChannelCoder):
             r = np.array([int(x) for x in bs], dtype=int)
             r[r == 0] = -1
 
-            # syndrome
+            # syndrome and max component
             s = np.abs(r.dot(self.lookup_table))
             max_comp, max_pos = s.max(), s.argmax()
             if max_comp < self.n / 2:
@@ -120,7 +121,7 @@ class HadamardCoder(ChannelCoder):
             c = self.lookup_table[max_pos, :].copy()
             c[c == -1] = 0
 
-            # actual decoding
+            # actual decoding to original message
             m = c.dot(self.R) % 2
 
             decoding = "".join([str(bit) for bit in m])
@@ -139,7 +140,7 @@ if __name__ == "__main__":
     s.set_alphabet(alpha)
     print(s.code2symbol)
 
-    r = HadamardCoder("rc", prob=False, factor=-100)
+    r = HadamardCoder("rc", prob=True, factor=-100)
     r.set_source_coder(s)
     print(r.lookup_table)
 

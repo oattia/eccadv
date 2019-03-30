@@ -71,62 +71,62 @@ if __name__ == "__main__":
         print("--")
 
 
-if __name__ == "__main2__":
-
-    from coders.source.source_coder import DummySourceCoder
-    r = ReedSolomonCoder("rsc", prob=True, n=8, factor=1000)
-    from coders.utils import all_bit_strings, pop_count, n_bits_with_k_set
-    from collections import defaultdict, OrderedDict
-    count = 0
-    for loop, bs in enumerate(n_bits_with_k_set(n * 8, n * 8 // 2)):
-        encoded_bytes = []
-        for i in range(0, len(bs), 8):
-            encoded_bytes.append(int(bs[i:i + 8], base=2))
-        if rs.check_fast(encoded_bytes):
-            count += 1
-            print(encoded_bytes)
-        if count >= 10:
-            print("********************* DONE *************")
-            print(f"Did {loop+1} iterations")
-            break
-
-
-    alpha = list(range(1 << k))
-    from coders.source.source_coder import DummySourceCoder
-    r = ReedSolomonCoder("rsc", prob=False, n=n, factor=0)
-    from coders.utils import all_bit_strings, pop_count, n_bits_with_k_set
-    from collections import defaultdict, OrderedDict
-    from unireedsolomon.ff import find_prime_polynomials
-
-    print(find_prime_polynomials(generator=3, c_exp=2))
-
-    r.set_source_coder(DummySourceCoder("dummy", codes=list(all_bit_strings(k))))
-    r.set_alphabet(alpha)
-    dd = defaultdict(int)
-    nonzero = defaultdict(int)
-    r.set_alphabet(alpha)
-    for sym in alpha:
-        # print(sym)
-        enc = r.encode(sym)
-        p = pop_count(enc)
-        encoded_bytes = [int(enc[i:i + 8], base=2) for i in range(0, len(enc), 8)]
-        nonzero[sum([1 if b != 0 else 0 for b in encoded_bytes])] += 1
-        dd[p] += 1
-
-    print(OrderedDict(sorted(dd.items(), key=lambda t: t[0])))
-    for c in range(n * 8 // 2 - n // 2, n * 8 // 2 + n // 2):
-        if c == n * 8 // 2:
-            print("********************************")
-        if dd[c]:
-            print(c, dd[c])
-        if c == n * 8 // 2:
-            print("********************************")
-
-    print(OrderedDict(sorted(nonzero.items(), key=lambda t: t[0])))
-    for c in range(n):
-        if c == n // 2:
-            print("********************************")
-        if nonzero[c]:
-            print(c, nonzero[c])
-        if c == n // 2:
-            print("********************************")
+# if __name__ == "__main2__":
+#
+#     from coders.source.source_coder import DummySourceCoder
+#     r = ReedSolomonCoder("rsc", prob=True, n=8, factor=1000)
+#     from coders.utils import all_bit_strings, pop_count, n_bits_with_k_set
+#     from collections import defaultdict, OrderedDict
+#     count = 0
+#     for loop, bs in enumerate(n_bits_with_k_set(n * 8, n * 8 // 2)):
+#         encoded_bytes = []
+#         for i in range(0, len(bs), 8):
+#             encoded_bytes.append(int(bs[i:i + 8], base=2))
+#         if rs.check_fast(encoded_bytes):
+#             count += 1
+#             print(encoded_bytes)
+#         if count >= 10:
+#             print("********************* DONE *************")
+#             print(f"Did {loop+1} iterations")
+#             break
+#
+#
+#     alpha = list(range(1 << k))
+#     from coders.source.source_coder import DummySourceCoder
+#     r = ReedSolomonCoder("rsc", prob=False, n=n, factor=0)
+#     from coders.utils import all_bit_strings, pop_count, n_bits_with_k_set
+#     from collections import defaultdict, OrderedDict
+#     from unireedsolomon.ff import find_prime_polynomials
+#
+#     print(find_prime_polynomials(generator=3, c_exp=2))
+#
+#     r.set_source_coder(DummySourceCoder("dummy", codes=list(all_bit_strings(k))))
+#     r.set_alphabet(alpha)
+#     dd = defaultdict(int)
+#     nonzero = defaultdict(int)
+#     r.set_alphabet(alpha)
+#     for sym in alpha:
+#         # print(sym)
+#         enc = r.encode(sym)
+#         p = pop_count(enc)
+#         encoded_bytes = [int(enc[i:i + 8], base=2) for i in range(0, len(enc), 8)]
+#         nonzero[sum([1 if b != 0 else 0 for b in encoded_bytes])] += 1
+#         dd[p] += 1
+#
+#     print(OrderedDict(sorted(dd.items(), key=lambda t: t[0])))
+#     for c in range(n * 8 // 2 - n // 2, n * 8 // 2 + n // 2):
+#         if c == n * 8 // 2:
+#             print("********************************")
+#         if dd[c]:
+#             print(c, dd[c])
+#         if c == n * 8 // 2:
+#             print("********************************")
+#
+#     print(OrderedDict(sorted(nonzero.items(), key=lambda t: t[0])))
+#     for c in range(n):
+#         if c == n // 2:
+#             print("********************************")
+#         if nonzero[c]:
+#             print(c, nonzero[c])
+#         if c == n // 2:
+#             print("********************************")

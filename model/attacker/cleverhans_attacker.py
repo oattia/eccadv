@@ -50,4 +50,3 @@ class CleverhansAttacker(Attacker):
         params = {param: self.attack_params[param] for param in self.attack.feedable_kwargs
                   if param in self.attack_params}
         return self.attack.generate_np(samples, **params)
-
