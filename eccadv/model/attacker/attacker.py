@@ -20,6 +20,9 @@ class Attacker:
     def initialize(self, nn_model):
         self.nn_model = nn_model
 
+    def get_params(self):
+        return self.attack_params
+
     def perturb(self, samples):
         """"
         Perturb the samples according to the adversarial attack.

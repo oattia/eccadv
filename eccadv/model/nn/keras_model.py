@@ -53,10 +53,6 @@ def art_cnn_model(input_shape, output_size, config):
     return model
 
 
-def hamming_loss(y_true, y_pred):
-    tf.convert_to_tensor_or_sparse_tensor()
-
-
 KERAS_MODEL_CATALOG = {
     "ch_cnn": ch_cnn_model,
     "art_cnn": art_cnn_model
@@ -64,22 +60,52 @@ KERAS_MODEL_CATALOG = {
 
 
 def mae(labels, preds, from_logits=True):
-    def mmaaee(_, __):
-        return keras.losses.mean_absolute_error(labels, preds)
-    return mmaaee(labels, preds)
+    return keras.losses.mean_absolute_error(labels, preds)
 
 
 KERAS_LOSS_CATALOG = {
-    "cross_entropy": "categorical_crossentropy",
-    "binary_entropy": "binary_crossentropy",
-    "mse": "mean_squared_error",
-    "hamming_loss": hamming_loss,
+    "cross_entropy": keras.losses.categorical_crossentropy,
+    "binary_entropy": keras.losses.binary_crossentropy,
+    "mse": keras.losses.mean_squared_error,
     "sig_entropy": tf.losses.sigmoid_cross_entropy,
-    "edit_distance": tf.edit_distance,
-    "mae": mae #keras.losses.mean_absolute_error
+    "mae": mae  # keras.losses.mean_absolute_error
 }
 
 
+def get_adversarial_acc_metric(model, attacker, attacker_params):
+    def adv_acc(y, _):
+        # Generate adversarial examples
+        x_adv = attacker.generate(model.input, **attacker_params)
+        # Consider the attack to be constant
+        x_adv = tf.stop_gradient(x_adv)
+
+        # Accuracy on the adversarial examples
+        preds_adv = model(x_adv)
+        return keras.metrics.categorical_accuracy(y, preds_adv)
+
+    return adv_acc
+
+
+def get_adversarial_loss(model, loss, attacker, attacker_params):
+    def adv_loss(y, preds):
+        # Cross-entropy on the legitimate examples
+        cross_ent = loss(y, preds)
+
+        # Generate adversarial examples
+        x_adv = attacker.generate(model.input, **attacker_params)
+
+        # Consider the attack to be constant
+        x_adv = tf.stop_gradient(x_adv)
+
+        # Cross-entropy on the adversarial examples
+        preds_adv = model(x_adv)
+        cross_ent_adv = loss(y, preds_adv)
+
+        return 0.5 * cross_ent + 0.5 * cross_ent_adv
+    return adv_loss
+
+
+# For ART to work
 import keras.backend as k
 setattr(k, "mae", KERAS_LOSS_CATALOG["mae"])
 
@@ -101,15 +127,24 @@ class KerasNnModel(NeuralNetModel):
 
         # To be able to call the model in the custom loss, we need to call it once
         # before, see https://github.com/tensorflow/tensorflow/issues/23769
-        # self.network_model(self.network_model.input)
+        self.network_model(self.network_model.input)
+
+    def compile(self, atkr=None):
+        loss = KERAS_LOSS_CATALOG[self.config["loss"]]
+        metrics = ["accuracy"]
+
+        if atkr:
+            attacker = atkr.attack
+            attacker_params = atkr.get_params()
+            loss = get_adversarial_loss(self.network_model, loss, attacker, attacker_params)
+            metrics.append(get_adversarial_acc_metric(self.network_model, attacker, attacker_params))
 
         self.network_model.compile(
             optimizer=keras.optimizers.Adam(self.config["lr"]),
-            loss=KERAS_LOSS_CATALOG[self.config["loss"]],
-            metrics=["accuracy"]
+            loss=loss,
+            metrics=metrics
         )
 
-        import keras.backend as k
         k.set_learning_phase(1)
 
     def train_batch(self, features, labels):

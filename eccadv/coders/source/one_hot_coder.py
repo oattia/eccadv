@@ -4,7 +4,6 @@ from coders.source.source_coder import SourceCoder
 from coders.utils import bit_list_to_str
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 class OneHotCoder(SourceCoder):

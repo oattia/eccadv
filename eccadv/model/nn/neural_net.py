@@ -37,6 +37,12 @@ class NeuralNetModel:
         """
         raise NotImplementedError
 
+    def compile(self, atkr=None):
+        """
+        Compiles the  model adding adversarial training if specified
+        """
+        raise NotImplementedError
+
     def train_batch(self, features, labels):
         """
         Train and update the parameters for one batch.

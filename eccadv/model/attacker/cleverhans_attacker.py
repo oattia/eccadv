@@ -45,8 +45,10 @@ class CleverhansAttacker(Attacker):
         else:
             raise Exception("Unsupported attack '{}' for Cleverhans.".format(attack_method))
 
+    def get_params(self):
+        return {param: self.attack_params[param] for param in self.attack.feedable_kwargs
+                if param in self.attack_params}
+
     def perturb(self, samples):
         # perturb the features according to the attack params
-        params = {param: self.attack_params[param] for param in self.attack.feedable_kwargs
-                  if param in self.attack_params}
-        return self.attack.generate_np(samples, **params)
+        return self.attack.generate_np(samples, **self.get_params())

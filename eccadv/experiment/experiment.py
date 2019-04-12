@@ -1,8 +1,11 @@
 import logging
 from pathlib import Path
-from model.utils import threshold
 
-from sklearn.metrics import accuracy_score
+from coders.channel import ChannelCoder
+from model.utils import threshold
+from dataset.utils import dump_image
+
+import pandas as pd
 import tensorflow as tf
 import numpy as np
 import torch
@@ -13,11 +16,15 @@ logger = logging.getLogger(__name__)
 
 
 class Experiment:
+
+    eval_type1 = "benign"
+    eval_type2 = "adv"
+
     """
     Class for Experiment logic.
     Links and initializes components, manages NeuralNetModel models, attacker and evaluations.
     """
-    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker, thresholding):
+    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker, thresholding, max_steps, adv_train):
         self.name = name
         self.seed = seed
         self.dataset = dataset
@@ -27,6 +34,8 @@ class Experiment:
         self.attacker = attacker
         self.output_dir = Path("exp_output") / name
         self.thresholding = thresholding
+        self.max_steps = max_steps
+        self.adv_train = adv_train
 
     def _set_seed(self):
         np.random.seed(self.seed)
@@ -52,6 +61,9 @@ class Experiment:
         self.model.initialize(self.dataset.shape, self.ccoder.output_size(), len(ds_labels))
         self.attacker.initialize(self.model)
 
+        adv_trainer = self.attacker if self.adv_train else None
+        self.model.compile(adv_trainer)
+
     def _train_model(self):
         if not self.model.is_trainable:
             return
@@ -70,27 +82,76 @@ class Experiment:
             self.model.save_to(self.output_dir / self.model.name)
 
     def _predict_labels(self, features):
-        nn_labels = self.model.predict(features)
-        # print(nn_labels.tolist())
-        ll = np.array([self.ccoder.decode(threshold(nn_label, **self.thresholding)) for nn_label in nn_labels])
-        # print(ll.tolist())
-        return ll
+        return np.array([self.ccoder.decode(threshold(y, **self.thresholding)) for y in self.model.predict(features)])
+
+    def _eval_labels(self, eval_type, step, test_features, ground_truth, predicted, sample_size=2):
+        ground_truth_lables = ground_truth.astype(str)
+        correct_idx = [i for i in range(len(predicted)) if predicted[i] == ground_truth_lables[i]]
+        wrong_idx = [i for i in range(len(predicted)) if predicted[i] != ground_truth_lables[i]]
+        couldnot_predict_idx = [i for i in range(len(predicted)) if predicted[i].startswith(ChannelCoder.CANT_DECODE)]
+
+        choice_size = min(sample_size, len(couldnot_predict_idx))
+        idx_sample = np.random.choice(couldnot_predict_idx, choice_size, replace=False)
+        for i in range(choice_size):
+            image_name = "{}_couldnt_predict_step_{}_label_{}_{}.png".format(eval_type,
+                                                                             str(step),
+                                                                             ground_truth_lables[idx_sample[i]],
+                                                                             str(i))
+            dump_image(test_features[idx_sample[i]], self.output_dir / image_name)
+
+        return correct_idx, wrong_idx, couldnot_predict_idx
 
     def _evaluate(self):
         """
         Evaluates the model on benign and adversarial examples.
         """
-        for test_features, ground_truth_lables in tqdm(self.dataset.iter_test(self.dataset.shape), desc="Test"):
-            model_acc, adv_acc, changed_acc = 0.0, 0.0, 0.0
-            benign_labels = self._predict_labels(test_features)
-            model_acc = accuracy_score(ground_truth_lables.astype(str), benign_labels)
+        eval_type1 = Experiment.eval_type1
+        eval_type2 = Experiment.eval_type2
+
+        results_to_ret = []
+
+        test_features, ground_truth = list(self.dataset.iter_test(self.dataset.shape))[0]
+        total = len(ground_truth)
+        labels = self._predict_labels(test_features)
+        correct_idx, wrong_idx, couldnot_predict_idx = \
+            self._eval_labels(eval_type1, 0, test_features, ground_truth, labels)
+
+        results_to_ret.append({
+            "step": 0,
+            "total": total,
+            "correct": len(correct_idx) / total,
+            "wrong": len(wrong_idx) / total,
+            "couldnot_predict": len(couldnot_predict_idx) / total
+        })
+
+        iterables_to_test = [None, (test_features[correct_idx], ground_truth[correct_idx])]
+        step = 1
+        while step <= min(len(iterables_to_test), self.max_steps):
+            test_features, ground_truth = iterables_to_test[step]
+            total = len(ground_truth)
+
+            if total == 0:
+                break
 
             perturbed_features = self.attacker.perturb(test_features)
             adv_labels = self._predict_labels(perturbed_features)
-            adv_acc = accuracy_score(ground_truth_lables.astype(str), adv_labels)
-            changed_acc = accuracy_score(benign_labels, adv_labels)
+            adv_correct_idx, adv_wrong_idx, adv_couldnot_predict_idx = \
+                self._eval_labels(eval_type2, step, perturbed_features, ground_truth, adv_labels)
 
-            yield model_acc, adv_acc, changed_acc
+            results_to_ret.append({
+                "step": step,
+                "total": total,
+                "correct": len(adv_correct_idx) / total,
+                "wrong": len(adv_wrong_idx) / total,
+                "couldnot_predict": len(adv_couldnot_predict_idx) / total,
+            })
+
+            if len(correct_idx) > 0:
+                iterables_to_test.append((perturbed_features[adv_correct_idx], ground_truth[adv_correct_idx]))
+
+            step += 1
+
+        return pd.DataFrame(results_to_ret, columns=["step", "total", "correct", "wrong", "couldnot_predict"])
 
     def run(self):
         # 1- initialize and set experiment assets
@@ -100,7 +161,7 @@ class Experiment:
         self._train_model()
 
         # 3- Evaluate the trained model on benign and adversarial examples
-        return [result for result in self._evaluate()]
+        return self._evaluate()
 
     def __repr__(self):
         return "Experiment(name={}, seed={}, dataset={}, source_coder={}, channel_coder={}, model={})".format(self.name, self.seed, self.dataset.name, self.scoder.name, self.ccoder.name, self.model.name)

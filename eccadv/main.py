@@ -26,10 +26,15 @@ def main():
         summary[ex_id] = ex.run()
         logger.info("Finished experiment {}".format(ex_id))
         logger.info("=" * 40)
-        logger.info("=" * 40)
+
+    logger.info("=" * 40)
 
     for ex_id, result in summary.items():
-        print(ex_id + ": " + str(result))
+        print(ex_id)
+        print("-" * 25)
+        print(result.to_string(index=False))
+        print("-" * 25)
+        # print(result.to_latex(index=False))
 
 
 if __name__ == "__main__":

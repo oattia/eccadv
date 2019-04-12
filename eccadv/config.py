@@ -129,10 +129,12 @@ class Config:
         for ex_id, ex_desc in to_load.items():
             exps[ex_id] = Experiment(name=ex_id,
                                      seed=ex_desc.get("seed", 777),
-                                     dataset=copy.copy(self.datasets.get(ex_desc["dataset"], None)),
-                                     source_coder=copy.copy(self.scoders.get(ex_desc["source_coder"], None)),
-                                     channel_coder=copy.copy(self.ccoders.get(ex_desc["channel_coder"], None)),
-                                     model=copy.copy(self.models.get(ex_desc["model"], None)),
-                                     attacker=copy.copy(self.attackers.get(ex_desc["attacker"], None)),
-                                     thresholding=ex_desc["thresholding"])
+                                     dataset=copy.deepcopy(self.datasets.get(ex_desc["dataset"], None)),
+                                     source_coder=copy.deepcopy(self.scoders.get(ex_desc["source_coder"], None)),
+                                     channel_coder=copy.deepcopy(self.ccoders.get(ex_desc["channel_coder"], None)),
+                                     model=copy.deepcopy(self.models.get(ex_desc["model"], None)),
+                                     attacker=copy.deepcopy(self.attackers.get(ex_desc["attacker"], None)),
+                                     thresholding=ex_desc["thresholding"],
+                                     max_steps=ex_desc.get("max_steps", 40),
+                                     adv_train=ex_desc.get("adv_train", True))
         return exps

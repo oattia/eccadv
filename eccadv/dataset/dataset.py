@@ -77,11 +77,9 @@ class Dataset:
     def get_num_train_batches(self, batch_size):
         return math.ceil(len(self.labels_train) / batch_size)
 
-    def iter_test(self, shape, batch_size=None):
+    def iter_test(self, shape):
         self._is_loaded()
-        if not batch_size:
-            batch_size = len(self.labels_test)
-        assert batch_size > 0
+        batch_size = len(self.labels_test)
         return Dataset._iter_array(batch_size, shape, self.features_test, self.labels_test)
     
     def get_labels(self):

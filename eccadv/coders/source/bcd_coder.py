@@ -6,7 +6,6 @@ from coders.source.source_coder import SourceCoder
 from coders.utils import int_to_bit_str
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 class BcdCoder(SourceCoder):

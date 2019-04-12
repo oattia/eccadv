@@ -18,7 +18,7 @@ source_coders:
   bcd:
     type: "bcd"
     allow_zero: False
-    output_size: 5
+    output_size: -1
   weight:
     type: "weight"
     output_size: 6
@@ -64,7 +64,7 @@ models:
       lr: 0.001
       epochs: 6
       batch_size: 128
-      loss: "mae"
+      loss: "cross_entropy"
       nb_filters: 64
 
   ch_cnn_train_more:
@@ -101,7 +101,7 @@ attackers:
     type: "ch"
     params:
       method: "FGSM"
-      eps: 0.1
+      eps: 0.3
       clip_min: 0.0
       clip_max: 1.0
 
@@ -116,27 +116,27 @@ attackers:
 
 
 experiments:
-#  protected_rep:
-#    seed: 1234
-#    dataset: "mnist"
-#    source_coder: "weight"
-#    channel_coder: "rep_5"
-#    model: "ch_cnn_train_more"
-#    attacker: "fgsm_ch"
-#    thresholding:
-#      method: "max_k"
-#      k: 15
-#
-#  protected_hd:
-#    seed: 1234
-#    dataset: "mnist"
-#    source_coder: "bcd"
-#    channel_coder: "hadamard"
-#    model: "ch_cnn_train_more"
-#    attacker: "fgsm_ch"
-#    thresholding:
-#      method: "max_k"
-#      k: 16
+  protected_rep:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight"
+    channel_coder: "rep_5"
+    model: "ch_cnn_train_more"
+    attacker: "fgsm_ch"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+  protected_hd:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "bcd"
+    channel_coder: "hadamard"
+    model: "ch_cnn_train_more"
+    attacker: "fgsm_ch"
+    thresholding:
+      method: "max_k"
+      k: 8
 
   regular:
     seed: 1234

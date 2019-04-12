@@ -3,7 +3,6 @@ import logging
 from coders.utils import bit_list_to_str
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
 
 
 class SourceCoder:
@@ -74,6 +73,6 @@ class DummySourceCoder(SourceCoder):
 
     def _build_code(self):
         assert len(self.alphabet) == len(self.codes)
-        for symbol, code in zip(self.alphabet, self.codes):
+        for symbol, code in zip(self.alphabet, self.codes[: len(self.alphabet)]):
             self.symbol2code[symbol] = code
             self.code2symbol[code] = symbol

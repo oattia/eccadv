@@ -31,7 +31,8 @@ class ReedSolomonCoder(ChannelCoder):
     def encode(self, label):
         assert self.is_set()
         bs = ("0" * self.bit_pad) + self.source_coder.encode(label)
-        encoded_bytes = [int(x) for x in self.rs.encode([int(bs[i:i + 8], base=2) for i in range(0, len(bs), 8)], return_string=False)]
+        encoded_bytes = [int(x) for x in self.rs.encode([int(bs[i:i + 8], base=2) for i in range(0, len(bs), 8)],
+                                                        return_string=False)]
         encoding = "".join([int_to_bit_str(encoded_byte, 8) for encoded_byte in encoded_bytes])
         if self.prob:
             encoding = encode_probs(encoding, self.max_correct, self.factor)
@@ -53,22 +54,42 @@ class ReedSolomonCoder(ChannelCoder):
 
 
 if __name__ == "__main__":
-    alpha = list(range(8))
-    from coders.source.bcd_coder import BcdCoder
-    s = BcdCoder(name="bcd", allow_zero=True, output_size=-1)
+    x = 7
+    alpha = list(range(1 << x))
+
+    from coders.source import BcdCoder, RandomCoder
+    from tqdm import tqdm
+    from coders.utils import all_bit_strings, pop_count
+    from collections import defaultdict
+
+    # s = RandomCoder(name="rc", allow_zero=False, output_size=-1)
+    s = BcdCoder(name="bcd", allow_zero=False, output_size=-1)
     s.set_alphabet(alpha)
     print(s.code2symbol)
 
-    r = ReedSolomonCoder("rs", prob=True, factor=-100, n=8)
+    r = ReedSolomonCoder("rs", prob=False, factor=1, n=3)
     r.set_source_coder(s)
 
-    for sym in alpha:
-        print(sym)
-        enc = r.encode(sym)
-        print(enc)
-        dec = r.decode(enc)
-        print(dec)
-        print("--")
+    pp = defaultdict(int)
+    for ss in tqdm(range(1 << x)):
+        enc = r.encode(ss)
+        pp[pop_count(enc)] += 1
+        if pop_count(enc) == r.output_size() / 2:
+            print(enc)
+
+    print("-" * 40)
+    print(r.output_size()/2)
+    print(pp[r.output_size()/2])
+    print(pp)
+
+
+    # for sym in alpha:
+    #     print(sym)
+    #     enc = r.encode(sym)
+    #     print(enc)
+    #     dec = r.decode(enc)
+    #     print(dec)
+    #     print("--")
 
 
 # if __name__ == "__main2__":
@@ -90,7 +111,7 @@ if __name__ == "__main__":
 #             print(f"Did {loop+1} iterations")
 #             break
 #
-#
+#[GF2int(1), GF2int(9), GF2int(45), GF2int(85)]
 #     alpha = list(range(1 << k))
 #     from coders.source.source_coder import DummySourceCoder
 #     r = ReedSolomonCoder("rsc", prob=False, n=n, factor=0)

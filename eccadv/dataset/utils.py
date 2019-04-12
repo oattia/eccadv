@@ -1,8 +1,7 @@
 from PIL import Image
-import numpy as np
 
 
-def dump_image(fpath, arr: np.array):
+def dump_image(arr, fpath):
     w, h, c = arr.shape
     if c == 1:
         mode = "I"
