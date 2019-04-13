@@ -62,7 +62,7 @@ models:
       save: True
       structure: "ch_cnn"
       lr: 0.001
-      epochs: 6
+      epochs: 10
       batch_size: 128
       loss: "mae"
       nb_filters: 64
@@ -73,7 +73,7 @@ models:
       save: True
       structure: "ch_cnn"
       lr: 0.001
-      epochs: 18
+      epochs: 12
       batch_size: 128
       loss: "cross_entropy"
       nb_filters: 64
@@ -101,7 +101,7 @@ attackers:
     type: "ch"
     params:
       method: "FGSM"
-      eps: 0.01
+      eps: 0.3
       clip_min: 0.0
       clip_max: 1.0
 
@@ -127,24 +127,24 @@ experiments:
 #      method: "max_k"
 #      k: 15
 #
-  protected_hd:
-    seed: 1234
-    dataset: "mnist"
-    source_coder: "bcd"
-    channel_coder: "hadamard"
-    model: "ch_cnn_train_more"
-    attacker: "fgsm_ch"
-    thresholding:
-      method: "max_k"
-      k: 16
-
-#  regular:
+#  protected_hd:
 #    seed: 1234
 #    dataset: "mnist"
-#    source_coder: "oh"
-#    channel_coder: "dummy"
-#    model: "ch_cnn_train"
+#    source_coder: "bcd"
+#    channel_coder: "hadamard"
+#    model: "ch_cnn_train_more"
 #    attacker: "fgsm_ch"
 #    thresholding:
 #      method: "max_k"
-#      k: 1
+#      k: 16
+
+  regular:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_train"
+    attacker: "fgsm_ch"
+    thresholding:
+      method: "max_k"
+      k: 1

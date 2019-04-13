@@ -84,74 +84,64 @@ class Experiment:
     def _predict_labels(self, features):
         return np.array([self.ccoder.decode(threshold(y, **self.thresholding)) for y in self.model.predict(features)])
 
+    def _dump_samples(self, dump_type, eval_type, features, ground_truth_lables, idx, sample_size, step):
+        choice_size = min(sample_size, len(idx))
+        idx_sample = np.random.choice(idx, choice_size, replace=False)
+        for i in range(choice_size):
+            image_name = "{}_{}_step_{}_label_{}_{}.png".format(eval_type,
+                                                                dump_type,
+                                                                str(step),
+                                                                ground_truth_lables[idx_sample[i]],
+                                                                str(i))
+            dump_image(features[idx_sample[i]], self.output_dir / image_name)
+
     def _eval_labels(self, eval_type, step, test_features, ground_truth, predicted, sample_size=2):
         ground_truth_lables = ground_truth.astype(str)
         correct_idx = [i for i in range(len(predicted)) if predicted[i] == ground_truth_lables[i]]
         wrong_idx = [i for i in range(len(predicted)) if predicted[i] != ground_truth_lables[i]]
         couldnot_predict_idx = [i for i in range(len(predicted)) if predicted[i].startswith(ChannelCoder.CANT_DECODE)]
-
-        choice_size = min(sample_size, len(couldnot_predict_idx))
-        idx_sample = np.random.choice(couldnot_predict_idx, choice_size, replace=False)
-        for i in range(choice_size):
-            image_name = "{}_couldnt_predict_step_{}_label_{}_{}.png".format(eval_type,
-                                                                             str(step),
-                                                                             ground_truth_lables[idx_sample[i]],
-                                                                             str(i))
-            dump_image(test_features[idx_sample[i]], self.output_dir / image_name)
-
+        self._dump_samples("couldnt_predict", eval_type, test_features, ground_truth_lables, couldnot_predict_idx,
+                           sample_size, step)
+        self._dump_samples("wrong", eval_type, test_features, ground_truth_lables, wrong_idx,
+                           sample_size, step)
         return correct_idx, wrong_idx, couldnot_predict_idx
 
     def _evaluate(self):
         """
         Evaluates the model on benign and adversarial examples.
         """
-        eval_type1 = Experiment.eval_type1
-        eval_type2 = Experiment.eval_type2
-
         results_to_ret = []
 
         test_features, ground_truth = list(self.dataset.iter_test(self.dataset.shape))[0]
-        total = len(ground_truth)
+
         labels = self._predict_labels(test_features)
         correct_idx, wrong_idx, couldnot_predict_idx = \
-            self._eval_labels(eval_type1, 0, test_features, ground_truth, labels)
+            self._eval_labels(Experiment.eval_type1, 0, test_features, ground_truth, labels)
 
         results_to_ret.append({
             "step": 0,
-            "total": total,
-            "correct": len(correct_idx) / total,
-            "wrong": len(wrong_idx) / total,
-            "couldnot_predict": len(couldnot_predict_idx) / total
+            "correct": len(correct_idx),
+            "wrong": len(wrong_idx),
+            "couldnot_predict": len(couldnot_predict_idx)
         })
 
-        iterables_to_test = [None, (test_features[correct_idx], ground_truth[correct_idx])]
-        step = 1
-        while step <= min(len(iterables_to_test), self.max_steps):
-            test_features, ground_truth = iterables_to_test[step]
-            total = len(ground_truth)
-
-            if total == 0:
-                break
-
-            perturbed_features = self.attacker.perturb(test_features)
-            adv_labels = self._predict_labels(perturbed_features)
+        for step in range(1, self.max_steps+1):
+            test_features = self.attacker.perturb(test_features)
+            adv_labels = self._predict_labels(test_features)
             adv_correct_idx, adv_wrong_idx, adv_couldnot_predict_idx = \
-                self._eval_labels(eval_type2, step, perturbed_features, ground_truth, adv_labels)
+                self._eval_labels(Experiment.eval_type2, step, test_features, ground_truth, adv_labels)
 
             results_to_ret.append({
                 "step": step,
-                "total": total,
-                "correct": len(adv_correct_idx) / total,
-                "wrong": len(adv_wrong_idx) / total,
-                "couldnot_predict": len(adv_couldnot_predict_idx) / total,
+                "correct": len(adv_correct_idx),
+                "wrong": len(adv_wrong_idx),
+                "couldnot_predict": len(adv_couldnot_predict_idx),
             })
 
-            if len(correct_idx) > 0:
-                iterables_to_test.append((perturbed_features[adv_correct_idx], ground_truth[adv_correct_idx]))
+            if len(adv_correct_idx) == 0:
+                break
 
-            step += 1
-
-        return pd.DataFrame(results_to_ret, columns=["step", "total", "correct", "wrong", "couldnot_predict"])
+        return pd.DataFrame(results_to_ret, columns=["step", "correct", "wrong", "couldnot_predict"])
 
     def run(self):
         # 1- initialize and set experiment assets

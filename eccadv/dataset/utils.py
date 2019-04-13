@@ -1,11 +1,8 @@
-from PIL import Image
+from scipy import misc
 
 
 def dump_image(arr, fpath):
     w, h, c = arr.shape
     if c == 1:
-        mode = "L"
-        arr = arr.squeeze()
-    else:
-        mode = "RGB"
-    Image.fromarray(arr, mode).save(fpath)
+        arr = arr.squeeze(axis=2)
+    misc.imsave(fpath, arr)
