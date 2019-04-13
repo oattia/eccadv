@@ -101,7 +101,7 @@ attackers:
     type: "ch"
     params:
       method: "FGSM"
-      eps: 0.3
+      eps: 0.1
       clip_min: 0.0
       clip_max: 1.0
 
@@ -127,24 +127,24 @@ experiments:
 #      method: "max_k"
 #      k: 15
 #
-#  protected_hd:
-#    seed: 1234
-#    dataset: "mnist"
-#    source_coder: "bcd"
-#    channel_coder: "hadamard"
-#    model: "ch_cnn_train_more"
-#    attacker: "fgsm_ch"
-#    thresholding:
-#      method: "max_k"
-#      k: 16
-
-  regular:
+  protected_hd:
     seed: 1234
     dataset: "mnist"
-    source_coder: "oh"
-    channel_coder: "dummy"
-    model: "ch_cnn_train"
+    source_coder: "bcd"
+    channel_coder: "hadamard"
+    model: "ch_cnn_train_more"
     attacker: "fgsm_ch"
     thresholding:
       method: "max_k"
-      k: 1
+      k: 16
+
+#  regular:
+#    seed: 1234
+#    dataset: "mnist"
+#    source_coder: "oh"
+#    channel_coder: "dummy"
+#    model: "ch_cnn_train"
+#    attacker: "fgsm_ch"
+#    thresholding:
+#      method: "max_k"
+#      k: 1

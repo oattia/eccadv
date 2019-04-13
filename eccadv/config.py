@@ -136,5 +136,5 @@ class Config:
                                      attacker=copy.deepcopy(self.attackers.get(ex_desc["attacker"], None)),
                                      thresholding=ex_desc["thresholding"],
                                      max_steps=ex_desc.get("max_steps", 40),
-                                     adv_train=ex_desc.get("adv_train", True))
+                                     adv_train=ex_desc.get("adv_train", False))
         return exps

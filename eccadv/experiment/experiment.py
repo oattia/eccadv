@@ -19,6 +19,8 @@ class Experiment:
 
     eval_type1 = "benign"
     eval_type2 = "adv"
+    dump_type1 = "wrong"
+    dump_type2 = "couldnt_predict"
 
     """
     Class for Experiment logic.
@@ -84,26 +86,27 @@ class Experiment:
     def _predict_labels(self, features):
         return np.array([self.ccoder.decode(threshold(y, **self.thresholding)) for y in self.model.predict(features)])
 
-    def _dump_samples(self, dump_type, eval_type, features, ground_truth_lables, idx, sample_size, step):
+    def _dump_samples(self, dump_type, eval_type, features, ground_truth_lables, predicted, idx, sample_size, step):
         choice_size = min(sample_size, len(idx))
         idx_sample = np.random.choice(idx, choice_size, replace=False)
         for i in range(choice_size):
-            image_name = "{}_{}_step_{}_label_{}_{}.png".format(eval_type,
-                                                                dump_type,
-                                                                str(step),
-                                                                ground_truth_lables[idx_sample[i]],
-                                                                str(i))
-            dump_image(features[idx_sample[i]], self.output_dir / image_name)
+            image_name = "{}_{}_step_{}_label_{}".format(eval_type,
+                                                         dump_type,
+                                                         str(step),
+                                                         ground_truth_lables[idx_sample[i]])
+            if dump_type == Experiment.dump_type1:
+                image_name += "_predicted_{}".format(predicted[idx_sample[i]])
+            dump_image(features[idx_sample[i]], self.output_dir / (image_name + "_" + str(i) + ".png"))
 
     def _eval_labels(self, eval_type, step, test_features, ground_truth, predicted, sample_size=2):
         ground_truth_lables = ground_truth.astype(str)
         correct_idx = [i for i in range(len(predicted)) if predicted[i] == ground_truth_lables[i]]
         wrong_idx = [i for i in range(len(predicted)) if predicted[i] != ground_truth_lables[i]]
         couldnot_predict_idx = [i for i in range(len(predicted)) if predicted[i].startswith(ChannelCoder.CANT_DECODE)]
-        self._dump_samples("couldnt_predict", eval_type, test_features, ground_truth_lables, couldnot_predict_idx,
-                           sample_size, step)
-        self._dump_samples("wrong", eval_type, test_features, ground_truth_lables, wrong_idx,
-                           sample_size, step)
+        self._dump_samples(Experiment.dump_type1, eval_type, test_features, ground_truth_lables, predicted,
+                           wrong_idx, sample_size, step)
+        self._dump_samples(Experiment.dump_type2, eval_type, test_features, ground_truth_lables, predicted,
+                           couldnot_predict_idx, sample_size, step)
         return correct_idx, wrong_idx, couldnot_predict_idx
 
     def _evaluate(self):
