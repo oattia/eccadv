@@ -3,44 +3,52 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: project.aux
 The style file: unsrtnat.bst
 Database file #1: project.bib
-You've used 3 entries,
+I was expecting a `,' or a `}'---line 28 of file project.bib
+ :     
+ :     year = {2018},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty year in art2018
+Warning--empty year in art2018
+You've used 6 entries,
             2481 wiz_defined-function locations,
-            570 strings with 4780 characters,
-and the built_in function-call counts, 1151 in all, are:
-= -- 103
-> -- 29
-< -- 4
-+ -- 14
-- -- 8
-* -- 67
-:= -- 171
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 5
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 69
-empty$ -- 120
-format.name$ -- 13
-if$ -- 253
+            589 strings with 6117 characters,
+and the built_in function-call counts, 3359 in all, are:
+= -- 200
+> -- 340
+< -- 3
++ -- 120
+- -- 108
+* -- 328
+:= -- 601
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 12
+chr.to.int$ -- 6
+cite$ -- 8
+duplicate$ -- 126
+empty$ -- 220
+format.name$ -- 116
+if$ -- 656
 int.to.chr$ -- 1
-int.to.str$ -- 4
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 9
-pop$ -- 31
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 38
+num.names$ -- 18
+pop$ -- 52
 preamble$ -- 1
-purify$ -- 3
+purify$ -- 6
 quote$ -- 0
-skip$ -- 47
+skip$ -- 79
 stack$ -- 0
-substring$ -- 63
-swap$ -- 16
+substring$ -- 111
+swap$ -- 24
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
-warning$ -- 0
-while$ -- 11
+type$ -- 42
+warning$ -- 2
+while$ -- 20
 width$ -- 0
-write$ -- 45
+write$ -- 83
+(There was 1 error message)
