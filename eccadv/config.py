@@ -59,7 +59,8 @@ class Config:
             allow_zero = scoder_desc.get("allow_zero", False)
             output_size = scoder_desc.get("output_size", -1)
             if s_type == "rand":
-                scoders[coder_id] = RandomCoder(name=coder_id, allow_zero=allow_zero, output_size=output_size)
+                seed = scoder_desc.get("seed", 777)
+                scoders[coder_id] = RandomCoder(name=coder_id, allow_zero=allow_zero, output_size=output_size, seed=seed)
             elif s_type == "gray":
                 scoders[coder_id] = GrayCoder(name=coder_id, allow_zero=allow_zero, output_size=output_size)
             elif s_type == "bcd":
@@ -135,6 +136,7 @@ class Config:
                                      model=copy.deepcopy(self.models.get(ex_desc["model"], None)),
                                      attacker=copy.deepcopy(self.attackers.get(ex_desc["attacker"], None)),
                                      thresholding=ex_desc["thresholding"],
-                                     max_steps=ex_desc.get("max_steps", 5),
+                                     max_steps=ex_desc.get("max_steps", 40),
+                                     eval_freq=ex_desc.get("eval_freq", 4),
                                      adv_train=ex_desc.get("adv_train", False))
         return exps

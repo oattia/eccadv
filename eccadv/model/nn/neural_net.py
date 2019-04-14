@@ -21,12 +21,12 @@ class NeuralNetModel:
         self.output_size = -1
         self.is_trainable = True
 
-    def initialize(self, input_shape, output_dim, n_classes):
+    def initialize(self, input_shape, output_dim, n_classes, load_from=None):
         self.input_shape = input_shape
         self.output_size = output_dim
         self.n_classes = n_classes
-        if "load_from" in self.config:
-            self.load_from(self.config["load_from"])
+        if load_from:
+            self.load_from(load_from.as_posix())
             self.is_trainable = self.config.get("train", False)
         else:
             self._build_model()

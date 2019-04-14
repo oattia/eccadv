@@ -37,8 +37,8 @@ class WeightCoder(SourceCoder):
 
 
 if __name__ == "__main__":
-    alpha = list(range(16))
-    b = WeightCoder("wc", 6, 3)
+    alpha = list(range(10))
+    b = WeightCoder("wc", 10, 1)
     b.set_alphabet(alpha)
     for sym in alpha:
         print(sym)

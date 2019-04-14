@@ -12,8 +12,9 @@ class RandomCoder(SourceCoder):
     """
     Outputs an encoding for each symbol that is a random binary string.
     """
-    def __init__(self, name, allow_zero, output_size):
+    def __init__(self, name, allow_zero, output_size, seed):
         super(RandomCoder, self).__init__(name, allow_zero, output_size)
+        self.seed = seed
 
     def _build_code(self):
         min_output_size = int(np.ceil(np.log2(len(self.alphabet))))
@@ -24,6 +25,7 @@ class RandomCoder(SourceCoder):
         all_possible_encodings = list(all_bit_strings(self.output_size))
         if not self.allow_zero:
             all_possible_encodings.pop(0)
+        np.random.seed(self.seed)
         encoding_subset = np.random.choice(all_possible_encodings, len(self.alphabet), replace=False)
         for symbol, encoding in zip(self.alphabet, encoding_subset):
             self.symbol2code[symbol] = encoding

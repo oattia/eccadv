@@ -54,7 +54,7 @@ class ReedSolomonCoder(ChannelCoder):
 
 
 if __name__ == "__main__":
-    x = 7
+    x = 15
     alpha = list(range(1 << x))
 
     from coders.source import BcdCoder, RandomCoder
@@ -67,15 +67,15 @@ if __name__ == "__main__":
     s.set_alphabet(alpha)
     print(s.code2symbol)
 
-    r = ReedSolomonCoder("rs", prob=False, factor=1, n=3)
+    r = ReedSolomonCoder("rs", prob=False, factor=1, n=8)
     r.set_source_coder(s)
 
     pp = defaultdict(int)
-    for ss in tqdm(range(1 << x)):
+    for ss in range(1 << x):
         enc = r.encode(ss)
         pp[pop_count(enc)] += 1
-        if pop_count(enc) == r.output_size() / 2:
-            print(enc)
+        # if pop_count(enc) == r.output_size() / 2:
+        #     print(enc)
 
     print("-" * 40)
     print(r.output_size()/2)

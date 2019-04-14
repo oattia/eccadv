@@ -10,3 +10,5 @@ adversarial-robustness-toolbox==0.5.0
 numpy==1.16.2
 unireedsolomon==1.0
 Pillow==5.4.1
+torch==1.0.1.post2
+torchvision==0.2.2.post3

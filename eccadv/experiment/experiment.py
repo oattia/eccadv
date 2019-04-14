@@ -22,11 +22,14 @@ class Experiment:
     dump_type1 = "wrong"
     dump_type2 = "couldnt_predict"
 
+    exp_dir = Path("exp_output")
+
     """
     Class for Experiment logic.
     Links and initializes components, manages NeuralNetModel models, attacker and evaluations.
     """
-    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker, thresholding, max_steps, adv_train):
+    def __init__(self, name, seed, dataset, source_coder, channel_coder, model, attacker, thresholding, max_steps, eval_freq, adv_train):
+        # passed
         self.name = name
         self.seed = seed
         self.dataset = dataset
@@ -34,15 +37,24 @@ class Experiment:
         self.ccoder = channel_coder
         self.model = model
         self.attacker = attacker
-        self.output_dir = Path("exp_output") / name
         self.thresholding = thresholding
         self.max_steps = max_steps
+        self.eval_freq = eval_freq
         self.adv_train = adv_train
+
+        # computed state
+        self.output_dir = Experiment.exp_dir / name
+        self.models_dir = Experiment.exp_dir / "models"
+        self.model_id = self._global_model_id()
 
     def _set_seed(self):
         np.random.seed(self.seed)
         tf.random.set_random_seed(self.seed)
         torch.manual_seed(self.seed)
+
+    def _global_model_id(self):
+        orderd_params = "_".join([str(v) + "-" + str(k) for k, v in sorted(self.model.config.items())])
+        return "{}_{}_{}_{}_{}".format(self.model.name, str(self.model.__class__.__name__), orderd_params, self.scoder.name, self.ccoder.name)
 
     def _initialize(self):
         # set all seeds
@@ -50,6 +62,9 @@ class Experiment:
 
         # create the output directory if it doesn't exist
         self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        # create models directory if doesn't exist
+        self.models_dir.mkdir(parents=True, exist_ok=True)
 
         # load and preprocess the dataset according to the config
         self.dataset.load()
@@ -59,12 +74,15 @@ class Experiment:
         self.scoder.set_alphabet(ds_labels)
         self.ccoder.set_source_coder(self.scoder)
 
+        load_from = self.models_dir / self.model_id if (self.models_dir / self.model_id).exists() else None
+
         # set up the model and the attacker
-        self.model.initialize(self.dataset.shape, self.ccoder.output_size(), len(ds_labels))
+        self.model.initialize(self.dataset.shape, self.ccoder.output_size(), len(ds_labels), load_from=load_from)
         self.attacker.initialize(self.model)
 
-        adv_trainer = self.attacker if self.adv_train else None
-        self.model.compile(adv_trainer)
+        if self.model.is_trainable:
+            adv_trainer = self.attacker if self.adv_train else None
+            self.model.compile(adv_trainer)
 
     def _train_model(self):
         if not self.model.is_trainable:
@@ -81,7 +99,7 @@ class Experiment:
                 metrics = self.model.train_batch(features, encoded_labels.astype(float))
                 epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {:0.2f}. Acc: {:0.2f}".format(e, i+1, metrics[0], metrics[1]))
         if save_model:
-            self.model.save_to(self.output_dir / self.model.name)
+            self.model.save_to(self.models_dir / self.model_id)
 
     def _predict_labels(self, features):
         return np.array([self.ccoder.decode(threshold(y, **self.thresholding)) for y in self.model.predict(features)])
@@ -132,19 +150,20 @@ class Experiment:
 
         for step in range(1, self.max_steps+1):
             test_features = self.attacker.perturb(test_features)
-            adv_labels = self._predict_labels(test_features)
-            adv_correct_idx, adv_wrong_idx, adv_couldnot_predict_idx = \
-                self._eval_labels(Experiment.eval_type2, step, test_features, ground_truth, adv_labels)
+            if (step == 1) or (step % self.eval_freq == 0):
+                adv_labels = self._predict_labels(test_features)
+                adv_correct_idx, adv_wrong_idx, adv_couldnot_predict_idx = \
+                    self._eval_labels(Experiment.eval_type2, step, test_features, ground_truth, adv_labels)
 
-            results_to_ret.append({
-                "step": step,
-                "correct": len(adv_correct_idx),
-                "wrong": len(adv_wrong_idx),
-                "couldnot_predict": len(adv_couldnot_predict_idx),
-            })
+                results_to_ret.append({
+                    "step": step,
+                    "correct": len(adv_correct_idx),
+                    "wrong": len(adv_wrong_idx),
+                    "couldnot_predict": len(adv_couldnot_predict_idx),
+                })
 
-            if len(adv_correct_idx) == 0:
-                break
+                if len(adv_correct_idx) == 0:
+                    break
 
         return pd.DataFrame(results_to_ret, columns=["step", "correct", "wrong", "couldnot_predict"])
 
