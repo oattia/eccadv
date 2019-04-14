@@ -9,26 +9,32 @@ source_coders:
     type: "weight"
     output_size: 6
     weight: 3
+
   rand_5:
     type: "rand"
     allow_zero: False
     output_size: 5
     seed: 1234
+
   rand_10:
     type: "rand"
     allow_zero: False
     output_size: 10
     seed: 4321
+
   oh:
     type: "oh"
     allow_zero: False
     output_size: -1
+
   dummy_rs_3_12:
     type: "dummy"
     from: "sample_codes/rs_3_12.txt"
+
   dummy_rs_4_16:
     type: "dummy"
     from: "sample_codes/rs_4_16.txt"
+
   dummy_rs_4_6:
     type: "dummy"
     from: "sample_codes/rs_4_6.txt"

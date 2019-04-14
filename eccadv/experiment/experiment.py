@@ -54,6 +54,9 @@ class Experiment:
 
     def _global_model_id(self):
         print(self.name)
+        print(self.model)
+        print(self.scoder)
+        print(self.ccoder)
         orderd_params = "_".join([str(v) + "-" + str(k) for k, v in sorted(self.model.config.items())])
         return "{}_{}_{}_{}_{}".format(self.model.name, str(self.model.__class__.__name__), orderd_params, self.scoder.name, self.ccoder.name)
 
