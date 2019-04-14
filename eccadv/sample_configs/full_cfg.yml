@@ -146,2509 +146,2510 @@ experiments:
       k: 1
 
 
-    exp_2:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_3:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_4:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_5:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_6:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_7:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_8:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_9:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_10:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_11:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_12:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_13:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_14:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_15:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_16:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_17:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_18:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_19:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_20:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_21:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_22:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_23:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_24:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_25:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_26:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_27:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_28:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_29:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_30:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_31:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_32:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_33:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_34:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_35:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_36:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_37:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_38:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_39:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_40:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_41:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_42:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_43:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_44:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_45:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_46:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_47:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_48:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_49:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_50:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_51:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_52:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_53:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_54:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_55:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_56:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_57:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_58:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_59:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_60:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_61:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_62:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_63:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_64:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_65:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_66:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_67:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_68:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_69:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_70:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_ce"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_71:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_72:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_73:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_74:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_75:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_76:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_77:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_78:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_79:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_80:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_81:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_82:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_83:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_84:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_85:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_86:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_87:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_88:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_89:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_90:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_91:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_92:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_93:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_94:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_95:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_96:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_97:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_98:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_99:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_100:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_101:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_102:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_103:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_104:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_105:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_106:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_107:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_108:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_109:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_110:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_111:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_112:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_113:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_114:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_115:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_116:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_117:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_118:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_119:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_120:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_121:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_122:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_123:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_124:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_125:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_126:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_127:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_128:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_129:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_130:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_131:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_132:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_133:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_134:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_135:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_136:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_137:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_138:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_139:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_140:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_mae"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_141:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_142:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_143:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_144:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_145:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_146:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_147:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_148:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_149:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_150:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_151:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_152:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_153:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_154:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "dummy"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_155:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_156:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_157:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_158:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_159:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_160:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_161:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_162:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_163:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_164:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_165:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_166:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_167:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_168:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.05"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_169:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_170:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_171:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_172:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_173:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_174:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_175:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_176:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_177:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_178:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_179:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_180:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_181:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_182:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.1"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_183:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_184:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_185:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_186:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_187:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_188:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_189:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_190:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_191:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_192:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_193:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_194:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_195:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_196:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.2"
-      thresholding:
-        method: "max_k"
-        k: 6
-
-
-    exp_197:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 1
-
-
-    exp_198:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_199:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 11
-
-
-    exp_200:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_201:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "oh"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 5
-
-
-    exp_202:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_203:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_11_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 33
-
-
-    exp_204:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_block"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_205:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "weight_3_6"
-      channel_coder: "rep_5_bit"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 15
-
-
-    exp_206:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_5"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_207:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "rand_10"
-      channel_coder: "hd"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 512
-
-
-    exp_208:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_3_12"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 12
-
-
-    exp_209:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_16"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 16
-
-
-    exp_210:
-      seed: 1234
-      dataset: "mnist"
-      source_coder: "dummy_rs_4_6"
-      channel_coder: "dummy"
-      model: "ch_cnn_be"
-      attacker: "fgsm_ch_0.3"
-      thresholding:
-        method: "max_k"
-        k: 6
+  exp_2:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_3:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_4:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_5:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_6:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_7:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_8:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_9:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_10:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_11:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_12:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_13:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_14:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_15:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_16:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_17:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_18:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_19:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_20:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_21:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_22:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_23:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_24:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_25:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_26:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_27:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_28:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_29:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_30:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_31:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_32:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_33:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_34:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_35:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_36:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_37:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_38:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_39:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_40:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_41:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_42:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_43:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_44:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_45:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_46:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_47:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_48:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_49:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_50:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_51:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_52:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_53:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_54:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_55:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_56:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_57:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_58:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_59:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_60:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_61:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_62:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_63:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_64:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_65:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_66:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_67:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_68:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_69:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_70:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_71:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_72:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_73:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_74:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_75:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_76:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_77:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_78:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_79:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_80:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_81:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_82:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_83:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_84:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_85:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_86:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_87:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_88:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_89:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_90:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_91:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_92:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_93:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_94:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_95:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_96:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_97:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_98:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_99:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_100:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_101:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_102:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_103:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_104:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_105:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_106:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_107:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_108:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_109:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_110:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_111:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_112:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_113:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_114:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_115:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_116:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_117:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_118:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_119:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_120:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_121:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_122:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_123:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_124:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_125:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_126:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_127:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_128:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_129:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_130:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_131:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_132:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_133:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_134:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_135:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_136:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_137:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_138:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_139:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_140:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_141:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_142:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_143:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_144:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_145:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_146:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_147:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_148:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_149:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_150:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_151:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_152:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_153:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_154:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "dummy"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_155:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_156:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_157:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_158:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_159:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_160:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_161:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_162:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_163:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_164:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_165:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_166:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_167:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_168:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.05"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_169:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_170:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_171:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_172:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_173:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_174:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_175:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_176:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_177:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_178:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_179:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_180:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_181:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_182:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.1"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_183:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_184:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_185:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_186:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_187:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_188:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_189:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_190:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_191:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_192:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_193:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_194:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_195:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_196:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.2"
+    thresholding:
+      method: "max_k"
+      k: 6
+
+
+  exp_197:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 1
+
+
+  exp_198:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_199:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 11
+
+
+  exp_200:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_201:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "oh"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 5
+
+
+  exp_202:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_203:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_11_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 33
+
+
+  exp_204:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_block"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_205:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "weight_3_6"
+    channel_coder: "rep_5_bit"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 15
+
+
+  exp_206:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_5"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_207:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "rand_10"
+    channel_coder: "hd"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_208:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_3_12"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 12
+
+
+  exp_209:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_16"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 16
+
+
+  exp_210:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_4_6"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 6
+
