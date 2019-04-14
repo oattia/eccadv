@@ -1,8 +1,8 @@
 import argparse
-import logging
 import sys
 
 from config import Config
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -18,8 +18,8 @@ def main():
         try:
             result = ex.run()
             summary[ex_id] = result
-            logger.info("Finished experiment {}".format(ex_id))
-            logger.info(sep)
+            print("Finished experiment {}".format(ex_id))
+            print(sep)
             res_str = result.to_string(index=False)
 
             print(ex_id)

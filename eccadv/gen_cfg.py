@@ -13,6 +13,7 @@ pattern = """
 """
 
 from collections import OrderedDict
+
 def main():
     models = ["ch_cnn_ce", "ch_cnn_mae", "ch_cnn_be"]
     attackers = ["dummy", "fgsm_ch_0.05", "fgsm_ch_0.1", "fgsm_ch_0.2", "fgsm_ch_0.3"]
