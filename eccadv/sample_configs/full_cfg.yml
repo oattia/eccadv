@@ -64,7 +64,7 @@ channel_coders:
     method: "bit"
     prob: False
     factor: 1
-  hadamard:
+  hd:
     type: "hd"
     prob: True
     factor: -1
