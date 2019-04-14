@@ -4,7 +4,7 @@ datasets:
     type: "mnist"
     path: "data/mnist"
     preprocessing:
-      sample: 1000
+      #sample: 1000
       normalize: "0-1" # currently ignored
 
   cifar10:
@@ -18,7 +18,7 @@ source_coders:
   bcd:
     type: "bcd"
     allow_zero: False
-    output_size: 5
+    output_size: -1
   weight:
     type: "weight"
     output_size: 6
@@ -30,11 +30,14 @@ source_coders:
   rand:
     type: "rand"
     allow_zero: False
-    output_size: -1
+    output_size: 5
   oh:
     type: "oh"
     allow_zero: False
     output_size: -1
+  dummy_rs_3_12:
+    type: "dummy"
+    from: "sample_codes/rs_3_12.txt"
 
 channel_coders:
   rs_10:
@@ -50,8 +53,8 @@ channel_coders:
     factor: 1
   hadamard:
     type: "hd"
-    prob: False
-    factor: 1
+    prob: True
+    factor: -1
   dummy:
     type: "dummy"
 
@@ -62,7 +65,7 @@ models:
       save: True
       structure: "ch_cnn"
       lr: 0.001
-      epochs: 10
+      epochs: 5
       batch_size: 128
       loss: "mae"
       nb_filters: 64
@@ -73,7 +76,7 @@ models:
       save: True
       structure: "ch_cnn"
       lr: 0.001
-      epochs: 12
+      epochs: 5
       batch_size: 128
       loss: "cross_entropy"
       nb_filters: 64
@@ -88,7 +91,6 @@ models:
       batch_size: 128
       loss: "cross_entropy"
       nb_filters: 32
-
 
   ch_cnn_loaded:
     type: "KERAS"
@@ -126,17 +128,28 @@ experiments:
 #    thresholding:
 #      method: "max_k"
 #      k: 15
-#
+
   protected_hd:
     seed: 1234
     dataset: "mnist"
-    source_coder: "bcd"
+    source_coder: "rand"
     channel_coder: "hadamard"
     model: "ch_cnn_train_more"
     attacker: "fgsm_ch"
     thresholding:
       method: "max_k"
       k: 16
+
+#  protected_rs_3_12:
+#    seed: 1234
+#    dataset: "mnist"
+#    source_coder: "dummy_rs_3_12"
+#    channel_coder: "dummy"
+#    model: "ch_cnn_train_more"
+#    attacker: "fgsm_ch"
+#    thresholding:
+#      method: "max_k"
+#      k: 12
 
 #  regular:
 #    seed: 1234

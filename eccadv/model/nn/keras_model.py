@@ -2,6 +2,7 @@ from model.nn.neural_net import NeuralNetModel, Libraries
 
 import tensorflow as tf
 from tensorflow import keras
+import numpy as np
 
 # Assignment rather than import because direct import from within Keras
 # doesn't work in tf 1.8
@@ -68,7 +69,7 @@ KERAS_LOSS_CATALOG = {
     "binary_entropy": keras.losses.binary_crossentropy,
     "mse": keras.losses.mean_squared_error,
     "sig_entropy": tf.losses.sigmoid_cross_entropy,
-    "mae": mae  # keras.losses.mean_absolute_error
+    "mae": keras.losses.mean_absolute_error  # mae  # keras.losses.mean_absolute_error
 }
 
 
@@ -152,6 +153,11 @@ class KerasNnModel(NeuralNetModel):
 
     def predict(self, features):
         return self.network_model.predict_on_batch(features)
+
+    def loss(self, features, labels):
+        loss = KERAS_LOSS_CATALOG[self.config["loss"]]
+        preds = self.predict(features).astype(float)
+        return k.get_session().run(loss(labels.astype(float), preds))
 
     def save_to(self, path):
         self.network_model.save(path.as_posix())

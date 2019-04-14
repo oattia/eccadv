@@ -78,7 +78,7 @@ class Experiment:
             batches_pbar = tqdm(self.dataset.iter_train(self.dataset.shape, batch_size), total=t_batches)
             for i, (features, labels) in enumerate(batches_pbar):
                 encoded_labels = np.array([[int(bit) for bit in codeword] for codeword in [self.ccoder.encode(y) for y in labels]])
-                metrics = self.model.train_batch(features, encoded_labels)
+                metrics = self.model.train_batch(features, encoded_labels.astype(float))
                 epoch_pbar.set_description("Epoch: {}. Batch: {}. Loss: {:0.2f}. Acc: {:0.2f}".format(e, i+1, metrics[0], metrics[1]))
         if save_model:
             self.model.save_to(self.output_dir / self.model.name)
@@ -101,8 +101,10 @@ class Experiment:
     def _eval_labels(self, eval_type, step, test_features, ground_truth, predicted, sample_size=2):
         ground_truth_lables = ground_truth.astype(str)
         correct_idx = [i for i in range(len(predicted)) if predicted[i] == ground_truth_lables[i]]
-        wrong_idx = [i for i in range(len(predicted)) if predicted[i] != ground_truth_lables[i]]
         couldnot_predict_idx = [i for i in range(len(predicted)) if predicted[i].startswith(ChannelCoder.CANT_DECODE)]
+        couldnot_predict_idx_set = set(couldnot_predict_idx)
+        wrong_idx = [i for i in range(len(predicted)) if predicted[i] != ground_truth_lables[i] and i not in couldnot_predict_idx_set]
+
         self._dump_samples(Experiment.dump_type1, eval_type, test_features, ground_truth_lables, predicted,
                            wrong_idx, sample_size, step)
         self._dump_samples(Experiment.dump_type2, eval_type, test_features, ground_truth_lables, predicted,

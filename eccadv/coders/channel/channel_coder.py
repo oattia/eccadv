@@ -41,7 +41,10 @@ class DummyChannelCoder(ChannelCoder):
 
     def decode(self, s):
         assert self.is_set()
-        return self.source_coder.decode(s)
+        try:
+            return self.source_coder.decode(s)
+        except Exception as e:
+            return "{} because {}".format(ChannelCoder.CANT_DECODE, str(e))
 
     def output_size(self):
         assert self.is_set()

@@ -72,7 +72,7 @@ class DummySourceCoder(SourceCoder):
         self.codes = codes
 
     def _build_code(self):
-        assert len(self.alphabet) == len(self.codes)
+        assert len(self.alphabet) <= len(self.codes)
         for symbol, code in zip(self.alphabet, self.codes[: len(self.alphabet)]):
             self.symbol2code[symbol] = code
             self.code2symbol[code] = symbol
