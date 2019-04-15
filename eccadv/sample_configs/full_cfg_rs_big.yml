@@ -43,6 +43,10 @@ source_coders:
     type: "dummy"
     from: "sample_codes/rs_128_512.txt"
 
+  dummy_rs_255_1020:
+    type: "dummy"
+    from: "sample_codes/rs_255_1020.txt"
+
 channel_coders:
   rep_11_block:
     type: "rep"
@@ -147,34 +151,34 @@ experiments:
   exp_800:
     seed: 1234
     dataset: "mnist"
-    source_coder: "dummy_rs_128_512"
+    source_coder: "dummy_rs_255_1020"
     channel_coder: "dummy"
     model: "ch_cnn_ce"
     attacker: "fgsm_ch_0.3"
     thresholding:
       method: "max_k"
-      k: 512
+      k: 1020
 
 
   exp_801:
     seed: 1234
     dataset: "mnist"
-    source_coder: "dummy_rs_128_512"
+    source_coder: "dummy_rs_255_1020"
     channel_coder: "dummy"
     model: "ch_cnn_mae"
     attacker: "fgsm_ch_0.3"
     thresholding:
       method: "max_k"
-      k: 512
+      k: 1020
 
 
   exp_802:
     seed: 1234
     dataset: "mnist"
-    source_coder: "dummy_rs_128_512"
+    source_coder: "dummy_rs_255_1020"
     channel_coder: "dummy"
     model: "ch_cnn_be"
     attacker: "fgsm_ch_0.3"
     thresholding:
       method: "max_k"
-      k: 512
+      k: 1020

@@ -67,7 +67,7 @@ if __name__ == "__main__":
     s.set_alphabet(alpha)
     print(s.code2symbol)
 
-    r = ReedSolomonCoder("rs", prob=False, factor=1, n=128)
+    r = ReedSolomonCoder("rs", prob=False, factor=1, n=255)
     r.set_source_coder(s)
 
     pp = defaultdict(int)
