@@ -11,7 +11,7 @@ def get_run_exps():
     results_table = open("results_table.txt", "r")
     for line in results_table:
         if line.startswith("exp_"):
-            run.add(line)
+            run.add(line.strip())
     results_table.close()
     return run
 
