@@ -1,7 +1,17 @@
 import argparse
+import gc
 import sys
 
 from config import Config
+
+
+def get_run_exps():
+    run = set()
+    results_table = open("results_table.txt", "r")
+    for line in results_table:
+        if line.startswith("exp_"):
+            run.add(line)
+    return run
 
 
 def main():
@@ -10,10 +20,15 @@ def main():
     args = parser.parse_args()    
     config = Config(args.config)
     summary = {}
-    results_latex = open("results_latex.txt", "w")
-    results_table = open("results_table.txt", "w")
+    run_exps = get_run_exps()
+    results_latex = open("results_latex.txt", "a", buffering=0)
+    results_table = open("results_table.txt", "a", buffering=0)
     sep = "--" * 25
     for ex_id, ex in config.experiments.items():
+        if ex_id in run_exps:
+            print("Skipping experiment {}".format(ex_id))
+            continue
+
         print("Starting experiment {}".format(ex_id))
         try:
             result = ex.run()
@@ -31,6 +46,12 @@ def main():
         except:
             print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
             print(sep)
+        finally:
+            try:
+                ex.cleanup()
+                gc.collect()
+            except:
+                pass
 
     results_latex.close()
     results_table.close()

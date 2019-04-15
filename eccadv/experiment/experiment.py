@@ -177,5 +177,24 @@ class Experiment:
         # 3- Evaluate the trained model on benign and adversarial examples
         return self._evaluate()
 
+    def cleanup(self):
+        # This is done to free up the memory after execution
+        self.name = None
+        self.seed = None
+        self.dataset = None
+        self.scoder = None
+        self.ccoder = None
+        self.model = None
+        self.attacker = None
+        self.thresholding = None
+        self.max_steps = None
+        self.eval_freq = None
+        self.adv_train = None
+
+        # computed state
+        self.output_dir = None
+        self.models_dir = None
+        self.model_id = None
+
     def __repr__(self):
         return "Experiment(name={}, seed={}, dataset={}, source_coder={}, channel_coder={}, model={})".format(self.name, self.seed, self.dataset.name, self.scoder.name, self.ccoder.name, self.model.name)

@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 class Config:
     """
-    Reads YAML config and stores experiments parameters.
+    Reads YAML config and stores experiments parameters and object skeletons.
     """
     def __init__(self, cfg_fpath):
         if not os.path.isfile(cfg_fpath):
@@ -125,6 +125,7 @@ class Config:
         return attackers
         
     def _load_experiments(self):
+        # Returns copies of all object skeletons, bad for memory consumption but needed to isolate experiments
         to_load = self._config["experiments"] or {}
         exps = {}
         for ex_id, ex_desc in to_load.items():
