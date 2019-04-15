@@ -1,6 +1,7 @@
 import argparse
 import gc
 import sys
+import os
 
 from config import Config
 
@@ -21,8 +22,8 @@ def main():
     config = Config(args.config)
     summary = {}
     run_exps = get_run_exps()
-    results_latex = open("results_latex.txt", "a", buffering=0)
-    results_table = open("results_table.txt", "a", buffering=0)
+    results_latex = open("results_latex.txt", "a")
+    results_table = open("results_table.txt", "a")
     sep = "--" * 25
     for ex_id, ex in config.experiments.items():
         if ex_id in run_exps:
@@ -43,6 +44,10 @@ def main():
 
             results_latex.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, result.to_latex(index=False), sep))
             results_table.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, res_str, sep))
+            results_latex.flush()
+            results_table.flush()
+            os.fsync(results_latex.fileno())
+            os.fsync(results_table.fileno())
         except:
             print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
             print(sep)
