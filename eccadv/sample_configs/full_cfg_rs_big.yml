@@ -1,0 +1,176 @@
+---
+datasets:
+  mnist:
+    type: "mnist"
+    path: "data/mnist"
+
+source_coders:
+  weight_3_6:
+    type: "weight"
+    output_size: 6
+    weight: 3
+
+  rand_5:
+    type: "rand"
+    allow_zero: False
+    output_size: 5
+    seed: 1234
+
+  rand_10:
+    type: "rand"
+    allow_zero: False
+    output_size: 10
+    seed: 4321
+
+  oh:
+    type: "oh"
+    allow_zero: False
+    output_size: -1
+
+  dummy_rs_3_12:
+    type: "dummy"
+    from: "sample_codes/rs_3_12.txt"
+
+  dummy_rs_4_16:
+    type: "dummy"
+    from: "sample_codes/rs_4_16.txt"
+
+  dummy_rs_4_6:
+    type: "dummy"
+    from: "sample_codes/rs_4_6.txt"
+
+channel_coders:
+  rep_11_block:
+    type: "rep"
+    rep: 11
+    method: "block"
+    prob: False
+    factor: 1
+  rep_11_bit:
+      type: "rep"
+      rep: 11
+      method: "bit"
+      prob: False
+      factor: 1
+  rep_5_block:
+    type: "rep"
+    rep: 5
+    method: "block"
+    prob: False
+    factor: 1
+  rep_5_bit:
+    type: "rep"
+    rep: 5
+    method: "bit"
+    prob: False
+    factor: 1
+  hd:
+    type: "hd"
+    prob: True
+    factor: -1
+  dummy:
+    type: "dummy"
+
+models:
+  ch_cnn_ce:
+    type: "KERAS"
+    params:
+      save: True
+      structure: "ch_cnn"
+      lr: 0.001
+      epochs: 10
+      batch_size: 128
+      loss: "cross_entropy"
+      nb_filters: 64
+  ch_cnn_mae:
+    type: "KERAS"
+    params:
+      save: True
+      structure: "ch_cnn"
+      lr: 0.001
+      epochs: 10
+      batch_size: 128
+      loss: "mae"
+      nb_filters: 64
+  ch_cnn_be:
+    type: "KERAS"
+    params:
+      save: True
+      structure: "ch_cnn"
+      lr: 0.001
+      epochs: 10
+      batch_size: 128
+      loss: "binary_entropy"
+      nb_filters: 64
+
+attackers:
+  fgsm_ch_0.05:
+    type: "ch"
+    params:
+      method: "FGSM"
+      eps: 0.05
+      clip_min: 0.0
+      clip_max: 1.0
+
+  fgsm_ch_0.1:
+    type: "ch"
+    params:
+      method: "FGSM"
+      eps: 0.1
+      clip_min: 0.0
+      clip_max: 1.0
+
+  fgsm_ch_0.2:
+    type: "ch"
+    params:
+      method: "FGSM"
+      eps: 0.2
+      clip_min: 0.0
+      clip_max: 1.0
+
+  fgsm_ch_0.3:
+    type: "ch"
+    params:
+      method: "FGSM"
+      eps: 0.3
+      clip_min: 0.0
+      clip_max: 1.0
+
+  dummy:
+    type: "dummy"
+
+experiments:
+  exp_800:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_128_512"
+    channel_coder: "dummy"
+    model: "ch_cnn_ce"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_801:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_128_512"
+    channel_coder: "dummy"
+    model: "ch_cnn_mae"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
+
+
+  exp_802:
+    seed: 1234
+    dataset: "mnist"
+    source_coder: "dummy_rs_128_512"
+    channel_coder: "dummy"
+    model: "ch_cnn_be"
+    attacker: "fgsm_ch_0.3"
+    thresholding:
+      method: "max_k"
+      k: 512
