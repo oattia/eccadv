@@ -15,22 +15,22 @@ def main():
     sep = "--" * 25
     for ex_id, ex in config.experiments.items():
         print("Starting experiment {}".format(ex_id))
-        # try:
-        result = ex.run()
-        summary[ex_id] = result
-        print("Finished experiment {}".format(ex_id))
-        print(sep)
-        res_str = result.to_string(index=False)
+        try:
+            result = ex.run()
+            summary[ex_id] = result
+            print("Finished experiment {}".format(ex_id))
+            print(sep)
+            res_str = result.to_string(index=False)
 
-        print(ex_id)
-        print(sep)
-        print(res_str)
+            print(ex_id)
+            print(sep)
+            print(res_str)
 
-        results_latex.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, result.to_latex(index=False), sep))
-        results_table.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, res_str, sep))
-        # except:
-        #     print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
-        #     print(sep)
+            results_latex.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, result.to_latex(index=False), sep))
+            results_table.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, res_str, sep))
+        except:
+            print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
+            print(sep)
 
     results_latex.close()
     results_table.close()
