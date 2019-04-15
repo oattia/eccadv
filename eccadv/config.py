@@ -139,5 +139,5 @@ class Config:
                                      thresholding=ex_desc["thresholding"],
                                      max_steps=ex_desc.get("max_steps", 40),
                                      eval_freq=ex_desc.get("eval_freq", 4),
-                                     adv_train=ex_desc.get("adv_train", True))
+                                     adv_train=ex_desc.get("adv_train", False))
         return exps
