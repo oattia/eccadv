@@ -39,6 +39,10 @@ source_coders:
     type: "dummy"
     from: "sample_codes/rs_4_6.txt"
 
+  dummy_rs_128_512:
+    type: "dummy"
+    from: "sample_codes/rs_128_512.txt"
+
 channel_coders:
   rep_11_block:
     type: "rep"
