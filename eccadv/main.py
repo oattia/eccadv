@@ -36,32 +36,32 @@ def main():
             continue
 
         print("Starting experiment {}".format(ex_id))
-        try:
-            result = ex.run()
-            summary[ex_id] = result
-            print("Finished experiment {}".format(ex_id))
-            print(sep)
-            res_str = result.to_string(index=False)
+        # try:
+        result = ex.run()
+        summary[ex_id] = result
+        print("Finished experiment {}".format(ex_id))
+        print(sep)
+        res_str = result.to_string(index=False)
 
-            print(ex_id)
-            print(sep)
-            print(res_str)
+        print(ex_id)
+        print(sep)
+        print(res_str)
 
-            results_latex.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, result.to_latex(index=False), sep))
-            results_table.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, res_str, sep))
-            results_latex.flush()
-            results_table.flush()
-            os.fsync(results_latex.fileno())
-            os.fsync(results_table.fileno())
-        except:
-            print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
-            print(sep)
-        finally:
-            try:
-                ex.cleanup()
-                gc.collect()
-            except:
-                pass
+        results_latex.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, result.to_latex(index=False), sep))
+        results_table.write("{}\n{}\n{}\n{}\n".format(ex_id, sep, res_str, sep))
+        results_latex.flush()
+        results_table.flush()
+        os.fsync(results_latex.fileno())
+        os.fsync(results_table.fileno())
+        # except:
+        #     print("experiment {} Failed because of {}".format(ex_id, str(sys.exc_info()[0])))
+        #     print(sep)
+        # finally:
+        #     try:
+        #         ex.cleanup()
+        #         gc.collect()
+        #     except:
+        #         pass
 
     results_latex.close()
     results_table.close()
