@@ -148,7 +148,7 @@ attackers:
     type: "dummy"
 
 experiments:
-  exp_800:
+  exp_700:
     seed: 1234
     dataset: "mnist"
     source_coder: "dummy_rs_255_1020"
@@ -160,7 +160,7 @@ experiments:
       k: 1020
 
 
-  exp_801:
+  exp_701:
     seed: 1234
     dataset: "mnist"
     source_coder: "dummy_rs_255_1020"
@@ -172,7 +172,7 @@ experiments:
       k: 1020
 
 
-  exp_802:
+  exp_702:
     seed: 1234
     dataset: "mnist"
     source_coder: "dummy_rs_255_1020"
