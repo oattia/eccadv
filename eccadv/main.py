@@ -24,7 +24,6 @@ def main():
     summary = {}
     run_exps = get_run_exps()
     print("Already ran {}".format(str(run_exps)))
-    sys.exit(0)
     results_latex = open("results_latex.txt", "a")
     results_table = open("results_table.txt", "a")
     sep = "--" * 25
