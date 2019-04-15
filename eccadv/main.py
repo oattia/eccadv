@@ -8,11 +8,14 @@ from config import Config
 
 def get_run_exps():
     run = set()
-    results_table = open("results_table.txt", "r")
-    for line in results_table:
-        if line.startswith("exp_"):
-            run.add(line.strip())
-    results_table.close()
+    try:
+        results_table = open("results_table.txt", "r")
+        for line in results_table:
+            if line.startswith("exp_"):
+                run.add(line.strip())
+        results_table.close()
+    except:
+        pass
     return run
 
 
